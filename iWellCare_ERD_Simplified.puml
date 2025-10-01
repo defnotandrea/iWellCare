@@ -1,0 +1,179 @@
+@startuml iWellCare_ERD_Simplified
+
+!define entity(x) class x << (E,#FFAAAA) >>
+!define relationship(x) <b>x</b>
+
+title iWellCare Healthcare Management System - Simplified Entity Relationship Diagram
+
+' Core Entities
+entity(users) {
+    + id
+    + username
+    + email
+    + role
+    + is_active
+}
+
+entity(doctors) {
+    + id
+    + specialization
+    + license_number
+    + consultation_fee
+    + status
+}
+
+entity(patients) {
+    + id
+    + medical_history
+    + allergies
+    + insurance_info
+    + is_active
+}
+
+entity(appointments) {
+    + id
+    + appointment_date
+    + appointment_time
+    + status
+    + type
+    + priority
+}
+
+entity(consultations) {
+    + id
+    + consultation_date
+    + status
+    + diagnosis
+    + treatment_plan
+}
+
+entity(prescriptions) {
+    + id
+    + prescription_date
+    + status
+    + valid_until
+    + total_amount
+}
+
+entity(medical_records) {
+    + id
+    + record_date
+    + record_type
+    + diagnosis
+    + status
+}
+
+entity(inventory) {
+    + id
+    + name
+    + category
+    + quantity
+    + unit_price
+    + supplier
+}
+
+entity(invoices) {
+    + id
+    + invoice_no
+    + date_issued
+    + total_amount
+    + status
+}
+
+entity(otp_codes) {
+    + id
+    + email
+    + code
+    + type
+    + expires_at
+}
+
+entity(doctor_availability_settings) {
+    + id
+    + is_available
+    + unavailable_until
+    + status
+}
+
+' Relationships
+
+' User Management
+users "1" --|| "1" doctors : "has profile"
+users "1" --|| "1" patients : "has profile"
+users "1" --o{ "0..*" otp_codes : "has"
+
+' Appointments & Consultations
+users "1" --o{ "0..*" appointments : "books (as patient)"
+doctors "1" --o{ "0..*" appointments : "conducts"
+patients "1" --o{ "0..*" appointments : "books"
+appointments "1" --|| "1" consultations : "leads to"
+
+' Medical Care
+doctors "1" --o{ "0..*" consultations : "conducts"
+patients "1" --o{ "0..*" consultations : "receives"
+consultations "1" --o{ "0..*" prescriptions : "results in"
+consultations "1" --o{ "0..*" medical_records : "creates"
+
+' Prescriptions
+doctors "1" --o{ "0..*" prescriptions : "prescribes"
+patients "1" --o{ "0..*" prescriptions : "receives"
+prescriptions "1" --o{ "0..*" prescription_medications : "contains"
+
+' Medical Records
+doctors "1" --o{ "0..*" medical_records : "creates"
+patients "1" --o{ "0..*" medical_records : "owns"
+
+' Billing
+patients "1" --o{ "0..*" invoices : "receives"
+appointments "1" --o{ "0..*" invoices : "generates"
+
+' Inventory Management
+inventory "1" --o{ "0..*" inventory_logs : "tracks"
+users "1" --o{ "0..*" inventory : "manages"
+
+' Doctor Availability
+doctors "1" --o{ "0..*" doctor_availability_settings : "has"
+users "1" --o{ "0..*" doctor_availability_settings : "sets"
+
+' Notes
+note right of users
+  <b>User Roles:</b>
+  • patient
+  • doctor  
+  • staff
+  • admin
+end note
+
+note right of appointments
+  <b>Appointment Status:</b>
+  • pending
+  • confirmed
+  • completed
+  • cancelled
+end note
+
+note right of consultations
+  <b>Consultation Status:</b>
+  • scheduled
+  • in_progress
+  • completed
+  • cancelled
+end note
+
+note right of prescriptions
+  <b>Prescription Status:</b>
+  • active
+  • completed
+  • cancelled
+  • expired
+end note
+
+note right of inventory
+  <b>Inventory Categories:</b>
+  • medications
+  • supplies
+  • equipment
+  • consumables
+end note
+
+@enduml

@@ -1,0 +1,60 @@
+@startuml Manage User Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access users management section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display users list;
+
+  |User|
+
+  :View user details if selected;
+
+else if (Create)
+
+  :Open create user form;
+
+  :Fill user details (username, email, role);
+
+  |System|
+
+  :Validate and save;
+
+else if (Edit)
+
+  :Select user;
+
+  :Edit user information;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete)
+
+  :Select user;
+
+  :Confirm deletion;
+
+  |System|
+
+  :Delete user account;
+
+endif
+
+stop
+
+note right
+  Staff: Limited to managing patient users only
+end note
+
+@enduml

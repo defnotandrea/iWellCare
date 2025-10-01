@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="5.0" etag="xxx" version="22.1.16" type="device">
+  <diagram name="iWellCare_ERD_TopToBottom" id="iWellCare_ERD_TopToBottom">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="iWellCare Healthcare Management System - Top to Bottom ERD" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="600" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Users Table - Top Level -->
+        <mxCell id="users_table" value="&lt;b&gt;users&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| username: varchar(255) |&lt;br&gt;| email: varchar(255) |&lt;br&gt;| password: varchar(255) |&lt;br&gt;| first_name: varchar(255) |&lt;br&gt;| last_name: varchar(255) |&lt;br&gt;| middle_name: varchar(255) |&lt;br&gt;| date_of_birth: date |&lt;br&gt;| gender: enum |&lt;br&gt;| phone_number: varchar(255) |&lt;br&gt;| street_address: varchar(255) |&lt;br&gt;| city: varchar(255) |&lt;br&gt;| state_province: varchar(255) |&lt;br&gt;| postal_code: varchar(255) |&lt;br&gt;| country: varchar(255) |&lt;br&gt;| role: enum |&lt;br&gt;| is_active: boolean |&lt;br&gt;| profile_photo: varchar(255) |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6E6;strokeColor=#FF6666;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="450" y="80" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Patients and Doctors Tables - Second Level -->
+        <mxCell id="patients_table" value="&lt;b&gt;patients&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| &lt;i&gt;user_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| first_name: varchar(255) |&lt;br&gt;| last_name: varchar(255) |&lt;br&gt;| contact: varchar(255) |&lt;br&gt;| email: varchar(255) |&lt;br&gt;| address: text |&lt;br&gt;| date_of_birth: date |&lt;br&gt;| gender: enum |&lt;br&gt;| blood_type: varchar(5) |&lt;br&gt;| emergency_contact: varchar(255) |&lt;br&gt;| emergency_contact_phone: varchar(255) |&lt;br&gt;| medical_history: text |&lt;br&gt;| allergies: text |&lt;br&gt;| current_medications: text |&lt;br&gt;| insurance_provider: varchar(255) |&lt;br&gt;| insurance_number: varchar(255) |&lt;br&gt;| registration_date: timestamp |&lt;br&gt;| is_active: boolean |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F3FF;strokeColor=#66B3FF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="doctors_table" value="&lt;b&gt;doctors&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| &lt;i&gt;user_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| specialization: varchar(255) |&lt;br&gt;| license_number: varchar(255) |&lt;br&gt;| years_of_experience: int |&lt;br&gt;| qualifications: text |&lt;br&gt;| bio: text |&lt;br&gt;| status: enum |&lt;br&gt;| consultation_fee: decimal(10,2) |&lt;br&gt;| available_days: json |&lt;br&gt;| available_hours: json |&lt;br&gt;| contact_number: varchar(255) |&lt;br&gt;| emergency_contact: varchar(255) |&lt;br&gt;| address: text |&lt;br&gt;| city: varchar(255) |&lt;br&gt;| state: varchar(255) |&lt;br&gt;| postal_code: varchar(255) |&lt;br&gt;| country: varchar(255) |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFE6;strokeColor=#66CC66;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="520" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Appointments Table - Third Level -->
+        <mxCell id="appointments_table" value="&lt;b&gt;appointments&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| &lt;i&gt;patient_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;doctor_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| appointment_date: date |&lt;br&gt;| appointment_time: time |&lt;br&gt;| type: varchar(255) |&lt;br&gt;| status: enum |&lt;br&gt;| notes: text |&lt;br&gt;| symptoms: text |&lt;br&gt;| priority: enum |&lt;br&gt;| duration: int |&lt;br&gt;| room_number: varchar(255) |&lt;br&gt;| &lt;i&gt;created_by&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;updated_by&lt;/i&gt;: bigint (FK) |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2E6;strokeColor=#FFB366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="450" y="960" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Consultations Table - Fourth Level -->
+        <mxCell id="consultations_table" value="&lt;b&gt;consultations&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| &lt;i&gt;appointment_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;patient_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;doctor_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| consultation_date: date |&lt;br&gt;| consultation_time: time |&lt;br&gt;| status: enum |&lt;br&gt;| chief_complaint: text |&lt;br&gt;| present_illness: text |&lt;br&gt;| past_medical_history: text |&lt;br&gt;| family_history: text |&lt;br&gt;| social_history: text |&lt;br&gt;| clinical_measurements: json |&lt;br&gt;| symptoms: text |&lt;br&gt;| diagnosis: text |&lt;br&gt;| treatment_plan: text |&lt;br&gt;| prescription: text |&lt;br&gt;| notes: text |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0E6FF;strokeColor=#B366FF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="450" y="1400" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Medical Records and Prescriptions Tables - Fifth Level -->
+        <mxCell id="medical_records_table" value="&lt;b&gt;medical_records&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| &lt;i&gt;patient_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;doctor_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;appointment_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| record_number: varchar(255) |&lt;br&gt;| record_date: date |&lt;br&gt;| chief_complaint: varchar(255) |&lt;br&gt;| present_illness: text |&lt;br&gt;| past_medical_history: text |&lt;br&gt;| family_history: text |&lt;br&gt;| social_history: text |&lt;br&gt;| review_of_systems: text |&lt;br&gt;| physical_examination: text |&lt;br&gt;| diagnosis: text |&lt;br&gt;| treatment_plan: text |&lt;br&gt;| medications_prescribed: text |&lt;br&gt;| lab_results: text |&lt;br&gt;| imaging_results: text |&lt;br&gt;| clinical_measurements: text |&lt;br&gt;| allergies: text |&lt;br&gt;| notes: text |&lt;br&gt;| status: enum |&lt;br&gt;| record_type: enum |&lt;br&gt;| is_confidential: boolean |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6F2;strokeColor=#FF66B3;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1840" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="prescriptions_table" value="&lt;b&gt;prescriptions&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| &lt;i&gt;patient_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;doctor_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;appointment_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| prescription_number: varchar(255) |&lt;br&gt;| prescription_date: date |&lt;br&gt;| diagnosis: text |&lt;br&gt;| notes: text |&lt;br&gt;| instructions: text |&lt;br&gt;| status: enum |&lt;br&gt;| valid_until: date |&lt;br&gt;| is_printed: boolean |&lt;br&gt;| printed_at: timestamp |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFFF;strokeColor=#66CCCC;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1840" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Billings Table - Sixth Level -->
+        <mxCell id="billings_table" value="&lt;b&gt;billings&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| &lt;i&gt;patient_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;appointment_id&lt;/i&gt;: bigint (FK) |&lt;br&gt;| amount: decimal(10,2) |&lt;br&gt;| consultation_fee: decimal(10,2) |&lt;br&gt;| medication_fee: decimal(10,2) |&lt;br&gt;| laboratory_fee: decimal(10,2) |&lt;br&gt;| other_fees: decimal(10,2) |&lt;br&gt;| total_amount: decimal(10,2) |&lt;br&gt;| status: varchar(255) |&lt;br&gt;| payment_date: date |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F2E6;strokeColor=#CCCC66;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="450" y="2280" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Supporting Tables - Right Side -->
+        <mxCell id="inventory_table" value="&lt;b&gt;inventory&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| name: varchar(255) |&lt;br&gt;| description: text |&lt;br&gt;| category: enum |&lt;br&gt;| quantity: int |&lt;br&gt;| reorder_level: int |&lt;br&gt;| expiration_date: date |&lt;br&gt;| unit_price: decimal(10,2) |&lt;br&gt;| supplier: varchar(255) |&lt;br&gt;| location: varchar(255) |&lt;br&gt;| batch_number: varchar(255) |&lt;br&gt;| notes: text |&lt;br&gt;| &lt;i&gt;created_by&lt;/i&gt;: bigint (FK) |&lt;br&gt;| &lt;i&gt;updated_by&lt;/i&gt;: bigint (FK) |&lt;br&gt;| last_updated: timestamp |&lt;br&gt;| is_active: boolean |&lt;br&gt;| archived: boolean |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F7FF;strokeColor=#66B3FF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="520" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="otp_codes_table" value="&lt;b&gt;otp_codes&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;id&lt;/b&gt;: bigint (PK) |&lt;br&gt;| email: varchar(255) |&lt;br&gt;| code: varchar(6) |&lt;br&gt;| type: enum |&lt;br&gt;| expires_at: timestamp |&lt;br&gt;| is_used: boolean |&lt;br&gt;| created_at: timestamp |&lt;br&gt;| updated_at: timestamp |&lt;br&gt;+------------------+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF0E6;strokeColor=#FFB366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="960" width="200" height="400" as="geometry" />
+        </mxCell>
+        
+        <!-- Relationships - Top to Bottom Flow -->
+        <!-- Users to Patients -->
+        <mxCell id="users_patients_rel" value="1:1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="users_table" target="patients_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Users to Doctors -->
+        <mxCell id="users_doctors_rel" value="1:1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="users_table" target="doctors_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Patients to Appointments -->
+        <mxCell id="patients_appointments_rel" value="1:N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="patients_table" target="appointments_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Doctors to Appointments -->
+        <mxCell id="doctors_appointments_rel" value="1:N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="doctors_table" target="appointments_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Appointments to Consultations -->
+        <mxCell id="appointments_consultations_rel" value="1:1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="appointments_table" target="consultations_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Consultations to Medical Records -->
+        <mxCell id="consultations_medical_records_rel" value="1:1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="consultations_table" target="medical_records_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Consultations to Prescriptions -->
+        <mxCell id="consultations_prescriptions_rel" value="1:1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="consultations_table" target="prescriptions_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Appointments to Billings -->
+        <mxCell id="appointments_billings_rel" value="1:1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="appointments_table" target="billings_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Users to Supporting Systems -->
+        <mxCell id="users_inventory_rel" value="1:N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="users_table" target="inventory_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="users_otp_rel" value="1:N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="users_table" target="otp_codes_table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;+------------------+&lt;br&gt;| &lt;b&gt;Field Name&lt;/b&gt;: Primary Key |&lt;br&gt;| &lt;i&gt;Field Name&lt;/i&gt;: Foreign Key |&lt;br&gt;| Field Name: Regular Field |&lt;br&gt;+------------------+&lt;br&gt;&lt;br&gt;&lt;b&gt;Cardinality&lt;/b&gt;&lt;br&gt;1:1 = One-to-One&lt;br&gt;1:N = One-to-Many&lt;br&gt;N:M = Many-to-Many" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F8F8;strokeColor=#CCCCCC;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="2280" width="200" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- System Flow Note -->
+        <mxCell id="flow_note" value="&lt;b&gt;System Flow (Top to Bottom):&lt;/b&gt;&lt;br&gt;1. User Management (users)&lt;br&gt;2. Profile Creation (patients, doctors)&lt;br&gt;3. Appointment Scheduling (appointments)&lt;br&gt;4. Medical Consultation (consultations)&lt;br&gt;5. Record Keeping (medical_records, prescriptions)&lt;br&gt;6. Financial Management (billings)&lt;br&gt;&lt;br&gt;&lt;b&gt;Supporting Systems:&lt;/b&gt;&lt;br&gt;• Inventory Management&lt;br&gt;• OTP Verification&lt;br&gt;• Security &amp; Access Control" style="text;html=1;strokeColor=none;fillColor=#F0F8FF;align=left;verticalAlign=top;whiteSpace=wrap;rounded=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="2280" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <!-- Level Indicators -->
+        <mxCell id="level1" value="&lt;b&gt;Level 1: User Management&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#FFE6E6;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="level2" value="&lt;b&gt;Level 2: Profile Creation&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#E6F3FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="520" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="level3" value="&lt;b&gt;Level 3: Appointment Scheduling&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#FFF2E6;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="960" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="level4" value="&lt;b&gt;Level 4: Medical Consultation&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#F0E6FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1400" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="level5" value="&lt;b&gt;Level 5: Record Keeping&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#FFE6F2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1840" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="level6" value="&lt;b&gt;Level 6: Financial Management&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#F2F2E6;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="50" y="2280" width="150" height="30" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

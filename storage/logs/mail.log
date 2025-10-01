@@ -1,0 +1,900 @@
+[2025-09-13 05:14:04] local.DEBUG: From: iWellCare Healthcare System <hello@example.com>
+To: jamilleandrea67@gmail.com
+Subject: Verify Your Email - iWellCare
+MIME-Version: 1.0
+Date: Sat, 13 Sep 2025 05:14:03 +0000
+Message-ID: <c744318b12eda4449fc8b5ee6ce680a3@example.com>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code - iWellCare</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .clinic-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .tagline {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 5px 0 0 0;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .main-content {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .verification-code {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-align: center;
+        }
+        .code-display {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .warning-box li {
+            margin: 5px 0;
+            color: #856404;
+        }
+        .contact-info {
+            background-color: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .contact-item {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .email-container {
+                padding: 20px;
+            }
+            .logo {
+                max-width: 150px;
+            }
+            .code-display {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Logo -->
+        <div class="header">
+            <img src="http://127.0.0.1:8000/assets/img/iWellCare-logo.png" alt="iWellCare Logo" class="logo">
+            <h1 class="clinic-name">Adult Wellness Clinic and Medical Laboratory</h1>
+            <p class="tagline">Your Health, Our Priority</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            Hello Andrea Jamille!
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">
+                                        📧 Email Verification Required
+                                    </h2>
+
+            <p style="font-size: 16px; color: #2c3e50; margin-bottom: 20px;">
+                                        To complete your email verification, please use the following code:
+                                    </p>
+
+            <!-- Verification Code Display -->
+            <div class="verification-code">
+                <div class="code-display">776063</div>
+                <p style="margin: 0; font-size: 16px;">Verification Code</p>
+            </div>
+
+            <!-- Important Information -->
+            <div class="info-box">
+                <h3 style="color: #2c3e50; margin: 0 0 15px 0;">⏰ Important Information</h3>
+                <ul style="margin: 0; padding-left: 20px; text-align: left;">
+                    <li>This code will expire in <strong>10 minutes</strong></li>
+                    <li>Enter the code exactly as shown above</li>
+                    <li>Do not share this code with anyone</li>
+                    <li>If you didn't request this code, please ignore this email</li>
+                </ul>
+            </div>
+
+            <!-- Security Warning -->
+            <div class="warning-box">
+                <h4 style="color: #856404; margin: 0 0 10px 0;">🛡️ Security Reminder</h4>
+                <ul style="margin: 0;">
+                    <li>Never share your verification codes with anyone</li>
+                    <li>iWellCare staff will never ask for your verification codes</li>
+                    <li>If you suspect unauthorized access, contact us immediately</li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="section-title" style="font-size: 16px; font-weight: bold; color: #2c3e50; margin: 20px 0 10px 0; text-align: left; padding-left: 10px; border-left: 3px solid #3498db;">📞 Need Help?</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span><strong>Phone:</strong> 09352410173</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span><strong>Email:</strong> adultwellnessclinicandmedicall@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span><strong>Address:</strong> Capitulacion Street Zone 2, Bangued, Abra</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Best regards,</strong></p>
+            <p>The Adult Wellness Clinic and Medical Laboratory Team 🏥</p>
+            <p style="margin-top: 15px; font-size: 12px;">
+                This is an automated message. Please do not reply to this email.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+  
+[2025-09-13 05:48:27] local.DEBUG: From: Mail <adultwellnessclinicandmecall@gmail.com>
+To: jamilleandrea67@gmail.com
+Subject: Verify Your Email - iWellCare
+MIME-Version: 1.0
+Date: Sat, 13 Sep 2025 05:48:27 +0000
+Message-ID: <aa9b5ac85727a759727f6810319bd9c2@gmail.com>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code - iWellCare</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .clinic-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .tagline {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 5px 0 0 0;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .main-content {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .verification-code {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-align: center;
+        }
+        .code-display {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .warning-box li {
+            margin: 5px 0;
+            color: #856404;
+        }
+        .contact-info {
+            background-color: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .contact-item {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .email-container {
+                padding: 20px;
+            }
+            .logo {
+                max-width: 150px;
+            }
+            .code-display {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Logo -->
+        <div class="header">
+            <img src="http://127.0.0.1:8000/assets/img/iWellCare-logo.png" alt="iWellCare Logo" class="logo">
+            <h1 class="clinic-name">Adult Wellness Clinic and Medical Laboratory</h1>
+            <p class="tagline">Your Health, Our Priority</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            Hello Andrea Jamille!
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">
+                                        📧 Email Verification Required
+                                    </h2>
+
+            <p style="font-size: 16px; color: #2c3e50; margin-bottom: 20px;">
+                                        To complete your email verification, please use the following code:
+                                    </p>
+
+            <!-- Verification Code Display -->
+            <div class="verification-code">
+                <div class="code-display">018482</div>
+                <p style="margin: 0; font-size: 16px;">Verification Code</p>
+            </div>
+
+            <!-- Important Information -->
+            <div class="info-box">
+                <h3 style="color: #2c3e50; margin: 0 0 15px 0;">⏰ Important Information</h3>
+                <ul style="margin: 0; padding-left: 20px; text-align: left;">
+                    <li>This code will expire in <strong>10 minutes</strong></li>
+                    <li>Enter the code exactly as shown above</li>
+                    <li>Do not share this code with anyone</li>
+                    <li>If you didn't request this code, please ignore this email</li>
+                </ul>
+            </div>
+
+            <!-- Security Warning -->
+            <div class="warning-box">
+                <h4 style="color: #856404; margin: 0 0 10px 0;">🛡️ Security Reminder</h4>
+                <ul style="margin: 0;">
+                    <li>Never share your verification codes with anyone</li>
+                    <li>iWellCare staff will never ask for your verification codes</li>
+                    <li>If you suspect unauthorized access, contact us immediately</li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="section-title" style="font-size: 16px; font-weight: bold; color: #2c3e50; margin: 20px 0 10px 0; text-align: left; padding-left: 10px; border-left: 3px solid #3498db;">📞 Need Help?</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span><strong>Phone:</strong> 09352410173</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span><strong>Email:</strong> adultwellnessclinicandmedicall@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span><strong>Address:</strong> Capitulacion Street Zone 2, Bangued, Abra</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Best regards,</strong></p>
+            <p>The Adult Wellness Clinic and Medical Laboratory Team 🏥</p>
+            <p style="margin-top: 15px; font-size: 12px;">
+                This is an automated message. Please do not reply to this email.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+  
+[2025-09-13 05:49:10] local.DEBUG: From: Mail <adultwellnessclinicandmecall@gmail.com>
+To: jamilleandrea67@gmail.com
+Subject: Verify Your Email - iWellCare
+MIME-Version: 1.0
+Date: Sat, 13 Sep 2025 05:49:10 +0000
+Message-ID: <8588ce38865f7057dddec1e75c866171@gmail.com>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code - iWellCare</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .clinic-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .tagline {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 5px 0 0 0;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .main-content {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .verification-code {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-align: center;
+        }
+        .code-display {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .warning-box li {
+            margin: 5px 0;
+            color: #856404;
+        }
+        .contact-info {
+            background-color: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .contact-item {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .email-container {
+                padding: 20px;
+            }
+            .logo {
+                max-width: 150px;
+            }
+            .code-display {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Logo -->
+        <div class="header">
+            <img src="http://127.0.0.1:8000/assets/img/iWellCare-logo.png" alt="iWellCare Logo" class="logo">
+            <h1 class="clinic-name">Adult Wellness Clinic and Medical Laboratory</h1>
+            <p class="tagline">Your Health, Our Priority</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            Hello Andrea Jamille!
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">
+                                        📧 Email Verification Required
+                                    </h2>
+
+            <p style="font-size: 16px; color: #2c3e50; margin-bottom: 20px;">
+                                        To complete your email verification, please use the following code:
+                                    </p>
+
+            <!-- Verification Code Display -->
+            <div class="verification-code">
+                <div class="code-display">773285</div>
+                <p style="margin: 0; font-size: 16px;">Verification Code</p>
+            </div>
+
+            <!-- Important Information -->
+            <div class="info-box">
+                <h3 style="color: #2c3e50; margin: 0 0 15px 0;">⏰ Important Information</h3>
+                <ul style="margin: 0; padding-left: 20px; text-align: left;">
+                    <li>This code will expire in <strong>10 minutes</strong></li>
+                    <li>Enter the code exactly as shown above</li>
+                    <li>Do not share this code with anyone</li>
+                    <li>If you didn't request this code, please ignore this email</li>
+                </ul>
+            </div>
+
+            <!-- Security Warning -->
+            <div class="warning-box">
+                <h4 style="color: #856404; margin: 0 0 10px 0;">🛡️ Security Reminder</h4>
+                <ul style="margin: 0;">
+                    <li>Never share your verification codes with anyone</li>
+                    <li>iWellCare staff will never ask for your verification codes</li>
+                    <li>If you suspect unauthorized access, contact us immediately</li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="section-title" style="font-size: 16px; font-weight: bold; color: #2c3e50; margin: 20px 0 10px 0; text-align: left; padding-left: 10px; border-left: 3px solid #3498db;">📞 Need Help?</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span><strong>Phone:</strong> 09352410173</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span><strong>Email:</strong> adultwellnessclinicandmedicall@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span><strong>Address:</strong> Capitulacion Street Zone 2, Bangued, Abra</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Best regards,</strong></p>
+            <p>The Adult Wellness Clinic and Medical Laboratory Team 🏥</p>
+            <p style="margin-top: 15px; font-size: 12px;">
+                This is an automated message. Please do not reply to this email.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+  
+[2025-09-14 15:28:30] local.DEBUG: From: iWellCare Healthcare System <adultwellnessclinicandmedicall@gmail.com>
+To: test@example.com
+Subject: Verify Your Email - iWellCare
+MIME-Version: 1.0
+Date: Sun, 14 Sep 2025 15:28:30 +0000
+Message-ID: <23ebb5d7b396984f370e227af6cd3bf8@gmail.com>
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code - iWellCare</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .email-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .clinic-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .tagline {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 5px 0 0 0;
+        }
+        .greeting {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .main-content {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .verification-code {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-align: center;
+        }
+        .code-display {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .warning-box li {
+            margin: 5px 0;
+            color: #856404;
+        }
+        .contact-info {
+            background-color: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .contact-item {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .email-container {
+                padding: 20px;
+            }
+            .logo {
+                max-width: 150px;
+            }
+            .code-display {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with Logo -->
+        <div class="header">
+            <img src="http://127.0.0.1:8000/assets/img/iWellCare-logo.png" alt="iWellCare Logo" class="logo">
+            <h1 class="clinic-name">Adult Wellness Clinic and Medical Laboratory</h1>
+            <p class="tagline">Your Health, Our Priority</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            Hello Test!
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">
+                                        📧 Email Verification Required
+                                    </h2>
+
+            <p style="font-size: 16px; color: #2c3e50; margin-bottom: 20px;">
+                                        To complete your email verification, please use the following code:
+                                    </p>
+
+            <!-- Verification Code Display -->
+            <div class="verification-code">
+                <div class="code-display">123456</div>
+                <p style="margin: 0; font-size: 16px;">Verification Code</p>
+            </div>
+
+            <!-- Important Information -->
+            <div class="info-box">
+                <h3 style="color: #2c3e50; margin: 0 0 15px 0;">⏰ Important Information</h3>
+                <ul style="margin: 0; padding-left: 20px; text-align: left;">
+                    <li>This code will expire in <strong>10 minutes</strong></li>
+                    <li>Enter the code exactly as shown above</li>
+                    <li>Do not share this code with anyone</li>
+                    <li>If you didn't request this code, please ignore this email</li>
+                </ul>
+            </div>
+
+            <!-- Security Warning -->
+            <div class="warning-box">
+                <h4 style="color: #856404; margin: 0 0 10px 0;">🛡️ Security Reminder</h4>
+                <ul style="margin: 0;">
+                    <li>Never share your verification codes with anyone</li>
+                    <li>iWellCare staff will never ask for your verification codes</li>
+                    <li>If you suspect unauthorized access, contact us immediately</li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="section-title" style="font-size: 16px; font-weight: bold; color: #2c3e50; margin: 20px 0 10px 0; text-align: left; padding-left: 10px; border-left: 3px solid #3498db;">📞 Need Help?</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span><strong>Phone:</strong> 09352410173</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span><strong>Email:</strong> adultwellnessclinicandmedicall@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span><strong>Address:</strong> Capitulacion Street Zone 2, Bangued, Abra</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Best regards,</strong></p>
+            <p>The Adult Wellness Clinic and Medical Laboratory Team 🏥</p>
+            <p style="margin-top: 15px; font-size: 12px;">
+                This is an automated message. Please do not reply to this email.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+  

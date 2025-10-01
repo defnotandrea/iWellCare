@@ -1,0 +1,462 @@
+@startuml iWellCare Complete System Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam backgroundColor #FFFFFF
+skinparam activity {
+  BackgroundColor #E3F2FD
+  BorderColor #1976D2
+  FontColor #000000
+}
+skinparam activityDiamond {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontColor #000000
+}
+
+title iWellCare Healthcare Management System - Complete Activity Diagram
+
+|Doctor|
+start
+:Access iWellCare System;
+:Login with credentials;
+
+|System|
+:Validate Doctor credentials;
+if (Authentication successful?) then (yes)
+  :Redirect to Doctor Dashboard;
+  
+  |Doctor|
+  :Select action from menu;
+  
+  if (Action type?) then (Manage Patients Information)
+    |System|
+    :Load patient management interface;
+    
+    |Doctor|
+    :Select patient action (Add/View/Update);
+    
+    if (Patient action?) then (Add)
+      :Enter new patient details;
+      note right: Doctor enters patient information
+      |System|
+      if (Valid data?) then (yes)
+        :Save patient to database;
+        note right: Patient record created
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select patient to view;
+      |System|
+      :Display patient information;
+      
+    elseif (Update)
+      :Select patient to update;
+      :Edit patient information;
+      |System|
+      :Save updated patient data;
+    endif
+    
+    
+  elseif (Manage Consultation)
+    |System|
+    :Load consultation interface;
+    
+    |Doctor|
+    :Select consultation action (Add/View/Update);
+    
+    if (Consultation action?) then (Add)
+      :Select patient for consultation;
+      :Record consultation details;
+      :Create prescription;
+      note right: Doctor creates treatment plan
+      |System|
+      if (Valid data?) then (yes)
+        :Save consultation to database;
+        note right: Consultation recorded
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select consultation to view;
+      |System|
+      :Display consultation details;
+      
+    elseif (Update)
+      :Select consultation to update;
+      :Edit consultation details;
+      |System|
+      :Save updated consultation data;
+    endif
+    
+  elseif (Manage Medication)
+    |System|
+    :Load medication interface;
+    
+    |Doctor|
+    :Select medication action (Add/View/Update);
+    
+    if (Medication action?) then (Add)
+      :Enter new medication details;
+      note right: Doctor adds medication to inventory
+      |System|
+      if (Valid data?) then (yes)
+        :Save medication to database;
+        note right: Medication added to inventory
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select medication to view;
+      |System|
+      :Display medication information;
+      
+    elseif (Update)
+      :Select medication to update;
+      :Edit medication details;
+      |System|
+      :Save updated medication data;
+    endif
+    
+  elseif (Manage User)
+    |System|
+    :Load user management interface;
+    
+    |Doctor|
+    :Select user action (Add/View/Update);
+    
+    if (User action?) then (Add)
+      :Enter new user details;
+      note right: Doctor creates new user account
+      |System|
+      if (Valid data?) then (yes)
+        :Save user to database;
+        note right: User account created
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select user to view;
+      |System|
+      :Display user information;
+      
+    elseif (Update)
+      :Select user to update;
+      :Edit user information;
+      |System|
+      :Save updated user data;
+    endif
+    
+  elseif (Generate Reports)
+    |System|
+    :Load reports interface;
+    
+    |Doctor|
+    :Select report type;
+    :Set report parameters;
+    :Generate report;
+    
+    |System|
+    :Process report request;
+    :Display generated report;
+    
+    |Doctor|
+    if (Export report?) then (yes)
+      :Choose export format;
+      |System|
+      :Export report file;
+    endif
+    
+  elseif (Logout)
+    |System|
+    :Destroy doctor session;
+    :Clear authentication data;
+    :Redirect to login page;
+    stop
+  endif
+  
+else (no)
+  :Display authentication error;
+  :Return to login form;
+  stop
+endif
+
+|Staff|
+start
+:Access iWellCare System;
+:Login with credentials;
+
+|System|
+:Validate Staff credentials;
+if (Authentication successful?) then (yes)
+  :Redirect to Staff Dashboard;
+  
+  |Staff|
+  :Select action from menu;
+  
+  if (Action type?) then (Manage Patients Information)
+    |System|
+    :Load patient management interface;
+    
+    |Staff|
+    :Select patient action (Add/View/Update);
+    
+    if (Patient action?) then (Add)
+      :Enter new patient details;
+      note right: Staff enters patient information
+      |System|
+      if (Valid data?) then (yes)
+        :Save patient to database;
+        note right: Patient record created
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select patient to view;
+      |System|
+      :Display patient information;
+      
+    elseif (Update)
+      :Select patient to update;
+      :Edit patient information;
+      |System|
+      :Save updated patient data;
+    endif
+    
+    
+  elseif (Manage Consultation)
+    |System|
+    :Load consultation interface;
+    
+    |Staff|
+    :Select consultation action (Add/View/Update);
+    
+    if (Consultation action?) then (Add)
+      :Select patient for consultation;
+      :Record consultation details;
+      note right: Staff assists with consultation
+      |System|
+      if (Valid data?) then (yes)
+        :Save consultation to database;
+        note right: Consultation recorded
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select consultation to view;
+      |System|
+      :Display consultation details;
+      
+    elseif (Update)
+      :Select consultation to update;
+      :Edit consultation details;
+      |System|
+      :Save updated consultation data;
+    endif
+    
+  elseif (Manage Medication)
+    |System|
+    :Load medication interface;
+    
+    |Staff|
+    :Select medication action (Add/View/Update);
+    
+    if (Medication action?) then (Add)
+      :Enter new medication details;
+      note right: Staff adds medication to inventory
+      |System|
+      if (Valid data?) then (yes)
+        :Save medication to database;
+        note right: Medication added to inventory
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select medication to view;
+      |System|
+      :Display medication information;
+      
+    elseif (Update)
+      :Select medication to update;
+      :Edit medication details;
+      |System|
+      :Save updated medication data;
+    endif
+    
+  elseif (Manage User - Patients Only)
+    |System|
+    :Load patient user management interface;
+    
+    |Staff|
+    :Select patient user action (Add/View/Update);
+    
+    if (Patient user action?) then (Add)
+      :Enter new patient user details;
+      note right: Staff creates patient account
+      |System|
+      if (Valid data?) then (yes)
+        :Save patient user to database;
+        note right: Patient account created
+      else (no)
+        :Show validation errors;
+      endif
+      
+    elseif (View)
+      :Select patient user to view;
+      |System|
+      :Display patient user information;
+      
+    elseif (Update)
+      :Select patient user to update;
+      :Edit patient user information;
+      |System|
+      :Save updated patient user data;
+    endif
+    
+  elseif (Generate Reports)
+    |System|
+    :Load reports interface;
+    
+    |Staff|
+    :Select report type;
+    :Set report parameters;
+    :Generate report;
+    
+    |System|
+    :Process report request;
+    :Display generated report;
+    
+    |Staff|
+    if (Export report?) then (yes)
+      :Choose export format;
+      |System|
+      :Export report file;
+    endif
+    
+  elseif (Logout)
+    |System|
+    :Destroy staff session;
+    :Clear authentication data;
+    :Redirect to login page;
+    stop
+  endif
+  
+else (no)
+  :Display authentication error;
+  :Return to login form;
+  stop
+endif
+
+|Patient|
+start
+:Access iWellCare System;
+
+if (User type?) then (New Patient)
+  :Sign up for new account;
+  note right: Patient creates new account
+  |System|
+  :Display registration form;
+  :Validate registration data;
+  if (Valid data?) then (yes)
+    :Create patient account;
+    :Create patient profile;
+    note right: New patient account created
+    :Auto-login patient;
+  else (no)
+    :Show validation errors;
+    :Return to registration;
+  endif
+  
+else (Existing Patient)
+  :Login with credentials;
+  |System|
+  :Validate Patient credentials;
+  if (Authentication successful?) then (yes)
+    :Redirect to Patient Dashboard;
+  else (no)
+    :Display authentication error;
+    :Return to login form;
+    stop
+  endif
+endif
+
+|Patient|
+:Select action from menu;
+
+if (Action type?) then (Book Appointment)
+  :Access appointment booking;
+  :Select preferred doctor;
+  :Choose available date and time;
+  :Enter appointment details;
+  :Submit booking request;
+  
+  |System|
+  :Validate appointment data;
+  :Check doctor availability;
+  :Check time conflicts;
+  if (Appointment valid?) then (yes)
+    :Create appointment record;
+    :Set status to pending;
+    :Send confirmation notification;
+    note right: Appointment booking confirmed
+  else (no)
+    :Show booking error;
+    :Return to booking form;
+  endif
+  
+elseif (Manage My Information)
+  :Access personal profile;
+  :View personal information;
+  
+  if (Update information?) then (yes)
+    :Edit personal details;
+    :Update contact information;
+    :Save changes;
+    
+    |System|
+    :Validate updated data;
+    :Save updated patient information;
+    note right: Patient information updated
+  endif
+  
+elseif (Logout)
+  |System|
+  :Destroy patient session;
+  :Clear authentication data;
+  :Redirect to login page;
+  stop
+endif
+
+note right
+  **Main Use Cases (Doctor & Staff):**
+  - Login - Authenticate user with credentials
+  - Manage Patients Information - Handle patient registration and records
+  - Manage Consultation - Oversee consultation process
+  - Manage Medication - Handle prescription and medication management
+  - Manage User - Manage system users and permissions
+  - Generate Reports - Create various system reports
+  - Logout - End user session
+end note
+
+note left
+  **Sub-Use Cases (Extensions):**
+  - Add - Create new records
+  - View - Display existing records
+  - Update - Modify existing records
+end note
+
+note bottom
+  **Patient-Specific Use Cases:**
+  - Sign up - Register new patient account
+  - Book Appointment - Schedule new appointment
+end note
+
+@enduml

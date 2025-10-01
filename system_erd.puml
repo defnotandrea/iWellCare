@@ -1,0 +1,322 @@
+@startuml iWellCare System ERD
+!define table(x) class x << (T,#FFAAAA) >>
+!define primary_key(x) <b>x</b>
+!define foreign_key(x) <i>x</i>
+
+' Users table (base table for all users)
+table(users) {
+  +primary_key(id): int
+  +username: varchar(255)
+  +email: varchar(255)
+  +email_verified_at: timestamp
+  +password: varchar(255)
+  +first_name: varchar(255)
+  +last_name: varchar(255)
+  +middle_name: varchar(255)
+  +date_of_birth: date
+  +gender: enum
+  +phone_number: varchar(255)
+  +street_address: varchar(255)
+  +city: varchar(255)
+  +state_province: varchar(255)
+  +postal_code: varchar(255)
+  +country: varchar(255)
+  +role: enum
+  +is_active: boolean
+  +profile_photo: varchar(255)
+  +remember_token: varchar(100)
+  +timestamps
+}
+
+' Patients table
+table(patients) {
+  +primary_key(id): int
+  +foreign_key(user_id): int
+  +first_name: varchar(255)
+  +last_name: varchar(255)
+  +contact: varchar(255)
+  +email: varchar(255)
+  +address: text
+  +date_of_birth: date
+  +gender: enum
+  +blood_type: varchar(5)
+  +emergency_contact: varchar(255)
+  +emergency_contact_phone: varchar(255)
+  +medical_history: text
+  +allergies: text
+  +current_medications: text
+  +insurance_provider: varchar(255)
+  +insurance_number: varchar(255)
+  +registration_date: timestamp
+  +is_active: boolean
+  +timestamps
+}
+
+' Doctors table
+table(doctors) {
+  +primary_key(id): int
+  +foreign_key(user_id): int
+  +specialization: varchar(255)
+  +license_number: varchar(255)
+  +years_of_experience: int
+  +qualifications: text
+  +bio: text
+  +status: enum
+  +consultation_fee: decimal
+  +available_days: json
+  +available_hours: json
+  +contact_number: varchar(255)
+  +emergency_contact: varchar(255)
+  +address: text
+  +city: varchar(255)
+  +state: varchar(255)
+  +postal_code: varchar(255)
+  +country: varchar(255)
+  +timestamps
+}
+
+' Appointments table
+table(appointments) {
+  +primary_key(id): int
+  +foreign_key(patient_id): int
+  +foreign_key(doctor_id): int
+  +appointment_date: date
+  +appointment_time: time
+  +type: varchar(255)
+  +status: enum
+  +notes: text
+  +symptoms: text
+  +priority: enum
+  +duration: int
+  +room_number: varchar(255)
+  +foreign_key(created_by): int
+  +foreign_key(updated_by): int
+  +timestamps
+}
+
+' Consultations table
+table(consultations) {
+  +primary_key(id): int
+  +foreign_key(appointment_id): int
+  +foreign_key(patient_id): int
+  +foreign_key(doctor_id): int
+  +consultation_date: date
+  +consultation_time: time
+  +status: enum
+  +chief_complaint: text
+  +present_illness: text
+  +past_medical_history: text
+  +family_history: text
+  +social_history: text
+  +clinical_measurements: json
+  +symptoms: text
+  +diagnosis: text
+  +treatment_plan: text
+  +prescription: text
+  +notes: text
+  +physical_examination: json
+  +prescription_notes: text
+  +follow_up_date: date
+  +follow_up_notes: text
+  +consultation_notes: text
+  +foreign_key(created_by): int
+  +foreign_key(updated_by): int
+  +timestamps
+}
+
+' Prescriptions table
+table(prescriptions) {
+  +primary_key(id): int
+  +foreign_key(patient_id): int
+  +foreign_key(doctor_id): int
+  +foreign_key(appointment_id): int
+  +prescription_number: varchar(255)
+  +prescription_date: date
+  +diagnosis: text
+  +notes: text
+  +instructions: text
+  +status: enum
+  +valid_until: date
+  +is_printed: boolean
+  +printed_at: timestamp
+  +timestamps
+}
+
+' Prescription Medications table
+table(prescription_medications) {
+  +primary_key(id): int
+  +foreign_key(prescription_id): int
+  +medication_name: varchar(255)
+  +dosage: varchar(255)
+  +frequency: varchar(255)
+  +duration: varchar(255)
+  +quantity: varchar(255)
+  +instructions: text
+  +timestamps
+}
+
+' Inventory table
+table(inventory) {
+  +primary_key(id): int
+  +name: varchar(255)
+  +description: text
+  +category: enum
+  +quantity: int
+  +reorder_level: int
+  +expiration_date: date
+  +unit_price: decimal
+  +supplier: varchar(255)
+  +last_updated: timestamp
+  +foreign_key(updated_by): int
+  +is_active: boolean
+  +archived: boolean
+  +timestamps
+}
+
+' Inventory Logs table
+table(inventory_logs) {
+  +primary_key(id): int
+  +foreign_key(item_id): int
+  +adjustment_quantity: int
+  +notes: text
+  +foreign_key(adjusted_by): int
+  +adjusted_at: timestamp
+}
+
+' Invoices table
+table(invoices) {
+  +primary_key(id): int
+  +foreign_key(patient_id): int
+  +invoice_no: varchar(255)
+  +date_issued: date
+  +article: varchar(255)
+  +unit_cost: decimal
+  +quantity: int
+  +amount: decimal
+  +total_sales: decimal
+  +less_sc: decimal
+  +net_of_sc: decimal
+  +withholding: decimal
+  +grand_total: decimal
+  +timestamps
+}
+
+' Medical Records table
+table(medical_records) {
+  +primary_key(id): int
+  +foreign_key(patient_id): int
+  +foreign_key(doctor_id): int
+  +record_date: date
+  +record_type: varchar(255)
+  +symptoms: text
+  +diagnosis: text
+  +treatment: text
+  +medications: text
+  +notes: text
+  +follow_up_date: date
+  +status: enum
+  +foreign_key(created_by): int
+  +foreign_key(updated_by): int
+  +timestamps
+}
+
+' Doctor Availability Settings table
+table(doctor_availability_settings) {
+  +primary_key(id): int
+  +foreign_key(doctor_id): int
+  +day_of_week: int
+  +start_time: time
+  +end_time: time
+  +is_available: boolean
+  +foreign_key(set_by): int
+  +timestamps
+}
+
+' OTP Codes table
+table(otp_codes) {
+  +primary_key(id): int
+  +email: varchar(255)
+  +otp_code: varchar(255)
+  +expires_at: timestamp
+  +is_used: boolean
+  +timestamps
+}
+
+' Sessions table
+table(sessions) {
+  +primary_key(id): varchar(255)
+  +foreign_key(user_id): int
+  +ip_address: varchar(45)
+  +user_agent: text
+  +payload: text
+  +last_activity: int
+}
+
+' Notifications table
+table(notifications) {
+  +primary_key(id): varchar(36)
+  +foreign_key(notifiable_id): int
+  +notifiable_type: varchar(255)
+  +type: varchar(255)
+  +data: text
+  +read_at: timestamp
+  +timestamps
+}
+
+' Failed Jobs table
+table(failed_jobs) {
+  +primary_key(id): int
+  +uuid: varchar(255)
+  +connection: text
+  +queue: text
+  +payload: longtext
+  +exception: longtext
+  +failed_at: timestamp
+}
+
+' Relationships
+users ||--o{ patients : "has_one"
+users ||--o{ doctors : "has_one"
+users ||--o{ appointments : "created_by"
+users ||--o{ appointments : "updated_by"
+users ||--o{ consultations : "created_by"
+users ||--o{ consultations : "updated_by"
+users ||--o{ inventory : "updated_by"
+users ||--o{ inventory_logs : "adjusted_by"
+users ||--o{ medical_records : "created_by"
+users ||--o{ medical_records : "updated_by"
+users ||--o{ doctor_availability_settings : "set_by"
+users ||--o{ sessions : "has_many"
+users ||--o{ notifications : "notifiable"
+users ||--o{ failed_jobs : "failed_job"
+
+patients ||--o{ appointments : "has_many"
+patients ||--o{ consultations : "has_many"
+patients ||--o{ prescriptions : "has_many"
+patients ||--o{ invoices : "has_many"
+patients ||--o{ medical_records : "has_many"
+
+doctors ||--o{ appointments : "has_many"
+doctors ||--o{ consultations : "has_many"
+doctors ||--o{ prescriptions : "has_many"
+doctors ||--o{ medical_records : "has_many"
+doctors ||--o{ doctor_availability_settings : "has_many"
+
+appointments ||--o{ consultations : "has_one"
+appointments ||--o{ prescriptions : "has_many"
+
+prescriptions ||--o{ prescription_medications : "has_many"
+
+inventory ||--o{ inventory_logs : "has_many"
+
+' Notes
+note right of users : "Base table for all users\n(doctors, staff, patients)"
+note right of patients : "Patient-specific information\nlinked to users table"
+note right of doctors : "Doctor-specific information\nlinked to users table"
+note right of appointments : "Scheduled appointments\nbetween patients and doctors"
+note right of consultations : "Medical consultation records\nfrom appointments"
+note right of prescriptions : "Medical prescriptions\nissued by doctors"
+note right of inventory : "Medical supplies and equipment\ninventory management"
+note right of invoices : "Billing and invoicing\nfor services rendered"
+
+@enduml

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><?php echo e($title); ?></title>
+    <style>
+        @page {
+            margin: 24px 24px 60px 24px;
+        }
+        body {
+            font-family: DejaVu Sans, Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #111827;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            color: #2563eb;
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .header p {
+            margin: 4px 0;
+            color: #6b7280;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .stat-box {
+            border: 1px solid #e5e7eb;
+            padding: 10px;
+            text-align: center;
+            flex: 1;
+            background-color: #f8fafc;
+        }
+        .stat-box h3 {
+            margin: 0;
+            color: #1d4ed8;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .stat-box p {
+            margin: 4px 0 0 0;
+            font-size: 11px;
+            color: #6b7280;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            table-layout: fixed;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 8px;
+            text-align: left;
+            font-size: 11px;
+            word-wrap: break-word;
+        }
+        th {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .status-badge {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .status-pending { background-color: #fde68a; color: #92400e; }
+        .status-confirmed { background-color: #bbf7d0; color: #065f46; }
+        .status-completed { background-color: #bfdbfe; color: #1e3a8a; }
+        .status-cancelled { background-color: #fecaca; color: #7f1d1d; }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 24px;
+            right: 24px;
+            height: 40px;
+            text-align: center;
+            font-size: 10px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 8px;
+        }
+        .pagenum:after { content: counter(page) " of " counter(pages); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><?php echo e($title); ?></h1>
+        <p>Generated on: <?php echo e($generated_at); ?></p>
+        <p>iWellCare Healthcare System</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <h3><?php echo e($total); ?></h3>
+            <p>Total Appointments</p>
+        </div>
+        <div class="stat-box">
+            <h3><?php echo e($confirmed); ?></h3>
+            <p>Confirmed</p>
+        </div>
+        <div class="stat-box">
+            <h3><?php echo e($pending); ?></h3>
+            <p>Pending</p>
+        </div>
+        <div class="stat-box">
+            <h3><?php echo e($completed); ?></h3>
+            <p>Completed</p>
+        </div>
+        <div class="stat-box">
+            <h3><?php echo e($cancelled); ?></h3>
+            <p>Cancelled</p>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Date & Time</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $__empty_1 = true; $__currentLoopData = $appointments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $appointment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <tr>
+                <td>
+                    <strong><?php echo e($appointment->patient->first_name); ?> <?php echo e($appointment->patient->last_name); ?></strong><br>
+                    <small><?php echo e($appointment->patient->email); ?></small>
+                </td>
+                <td>
+                    <strong><?php echo e($appointment->doctor->first_name); ?> <?php echo e($appointment->doctor->last_name); ?></strong><br>
+                    <?php if($appointment->doctor->specialization): ?>
+                        <small><?php echo e($appointment->doctor->specialization); ?></small>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <strong><?php echo e($appointment->appointment_date ? \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y') : 'N/A'); ?></strong><br>
+                    <small><?php echo e($appointment->appointment_time ?? ''); ?></small>
+                </td>
+                <td><?php echo e($appointment->appointment_type ? $appointment->appointment_type : 'General'); ?></td>
+                <td>
+                    <span class="status-badge status-<?php echo e($appointment->status); ?>">
+                        <?php echo e(ucfirst($appointment->status)); ?>
+
+                    </span>
+                </td>
+                <td>
+                    <?php if($appointment->notes): ?>
+                        <?php echo e(Str::limit($appointment->notes, 50)); ?>
+
+                    <?php else: ?>
+                        <em>No notes</em>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+            <tr>
+                <td colspan="6" style="text-align: center;">No appointments found.</td>
+            </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <p>This report was generated automatically by the iWellCare Healthcare System. Page <span class="pagenum"></span></p>
+    </div>
+</body>
+</html> <?php /**PATH C:\xampp\htdocs\iWellCare\resources\views\staff\reports\pdf\appointments.blade.php ENDPATH**/ ?>

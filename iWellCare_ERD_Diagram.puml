@@ -1,0 +1,407 @@
+@startuml iWellCare_ERD_Diagram
+
+!define ENTITY class
+!define PK <<PK>>
+!define FK <<FK>>
+!define UK <<UK>>
+
+title iWellCare Healthcare Management System - Entity Relationship Diagram
+
+' Users Entity (Core authentication and user management)
+ENTITY Users {
+    PK id : bigint
+    --
+    first_name : varchar(255)
+    last_name : varchar(255)
+    email : varchar(255) UK
+    username : varchar(255) UK
+    email_verified_at : timestamp
+    password : varchar(255)
+    role : enum('doctor', 'staff', 'patient')
+    phone : varchar(255)
+    address : text
+    street_address : varchar(255)
+    city : varchar(255)
+    state_province : varchar(255)
+    postal_code : varchar(255)
+    country : varchar(255)
+    profile_photo : varchar(255)
+    is_active : boolean
+    is_available : boolean
+    unavailable_message : text
+    unavailable_until : timestamp
+    remember_token : varchar(100)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Patients Entity
+ENTITY Patients {
+    PK id : bigint
+    FK user_id : bigint
+    --
+    first_name : varchar(255)
+    last_name : varchar(255)
+    contact : varchar(255)
+    email : varchar(255)
+    address : text
+    date_of_birth : date
+    gender : enum('male', 'female', 'other')
+    blood_type : varchar(5)
+    emergency_contact : varchar(255)
+    emergency_contact_phone : varchar(255)
+    medical_history : text
+    allergies : text
+    current_medications : text
+    insurance_provider : varchar(255)
+    insurance_number : varchar(255)
+    registration_date : timestamp
+    is_active : boolean
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Doctors Entity
+ENTITY Doctors {
+    PK id : bigint
+    FK user_id : bigint
+    --
+    specialization : varchar(255)
+    license_number : varchar(255) UK
+    years_of_experience : int
+    qualifications : text
+    bio : text
+    status : enum('active', 'inactive', 'suspended')
+    consultation_fee : decimal(10,2)
+    available_days : json
+    available_hours : json
+    contact_number : varchar(255)
+    emergency_contact : varchar(255)
+    address : text
+    city : varchar(255)
+    state : varchar(255)
+    postal_code : varchar(255)
+    country : varchar(255)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Appointments Entity
+ENTITY Appointments {
+    PK id : bigint
+    FK patient_id : bigint
+    FK doctor_id : bigint
+    FK created_by : bigint
+    FK updated_by : bigint
+    --
+    appointment_date : date
+    appointment_time : time
+    type : varchar(255)
+    status : enum('pending', 'confirmed', 'completed', 'cancelled')
+    notes : text
+    symptoms : text
+    priority : enum('low', 'medium', 'high', 'urgent')
+    duration : int
+    room_number : varchar(255)
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Consultations Entity
+ENTITY Consultations {
+    PK id : bigint
+    FK appointment_id : bigint
+    FK patient_id : bigint
+    FK doctor_id : bigint
+    FK created_by : bigint
+    FK updated_by : bigint
+    --
+    consultation_date : date
+    consultation_time : time
+    status : enum('scheduled', 'in_progress', 'completed', 'cancelled')
+    chief_complaint : text
+    present_illness : text
+    past_medical_history : text
+    family_history : text
+    social_history : text
+    vital_signs : json
+    symptoms : text
+    diagnosis : text
+    treatment_plan : text
+    prescription : text
+    notes : text
+    physical_examination : json
+    prescription_notes : text
+    follow_up_date : date
+    follow_up_notes : text
+    consultation_notes : text
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Prescriptions Entity
+ENTITY Prescriptions {
+    PK id : bigint
+    FK patient_id : bigint
+    FK doctor_id : bigint
+    FK appointment_id : bigint
+    --
+    prescription_number : varchar(255) UK
+    prescription_date : date
+    diagnosis : text
+    notes : text
+    instructions : text
+    status : enum('active', 'completed', 'cancelled')
+    valid_until : date
+    is_printed : boolean
+    printed_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Medical Records Entity
+ENTITY MedicalRecords {
+    PK id : bigint
+    FK patient_id : bigint
+    FK doctor_id : bigint
+    FK appointment_id : bigint
+    --
+    record_number : varchar(255) UK
+    record_date : date
+    chief_complaint : varchar(255)
+    present_illness : text
+    past_medical_history : text
+    family_history : text
+    social_history : text
+    review_of_systems : text
+    physical_examination : text
+    diagnosis : text
+    treatment_plan : text
+    medications_prescribed : text
+    lab_results : text
+    imaging_results : text
+    vital_signs : text
+    allergies : text
+    notes : text
+    status : enum('active', 'archived', 'deleted')
+    record_type : enum('consultation', 'follow_up', 'emergency', 'routine')
+    is_confidential : boolean
+    archived_at : timestamp
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Doctor Availability Settings Entity
+ENTITY DoctorAvailabilitySettings {
+    PK id : bigint
+    FK doctor_id : bigint
+    FK set_by : bigint
+    --
+    is_available : boolean
+    unavailable_message : text
+    unavailable_until : timestamp
+    status : varchar(255)
+    notes : text
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Billing Entity
+ENTITY Billings {
+    PK id : bigint
+    FK patient_id : bigint
+    --
+    amount : decimal(10,2)
+    status : enum('pending', 'paid', 'cancelled')
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Medications Entity
+ENTITY Medications {
+    PK id : bigint
+    FK created_by : bigint
+    FK updated_by : bigint
+    --
+    name : varchar(255)
+    generic_name : varchar(255)
+    brand_name : varchar(255)
+    category : varchar(100)
+    dosage_form : varchar(50)
+    strength : varchar(50)
+    manufacturer : varchar(255)
+    description : text
+    side_effects : text
+    contraindications : text
+    storage_instructions : text
+    quantity : int
+    reorder_level : int
+    unit_price : decimal(10,2)
+    expiration_date : date
+    prescription_required : boolean
+    is_active : boolean
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+' Inventory Logs Entity
+ENTITY InventoryLogs {
+    PK id : bigint
+    FK item_id : bigint
+    FK adjusted_by : bigint
+    --
+    adjustment_quantity : int
+    notes : text
+    adjusted_at : timestamp
+}
+
+' Medication Prescriptions Entity
+ENTITY MedicationPrescriptions {
+    PK id : bigint
+    FK medication_id : bigint
+    FK patient_id : bigint
+    FK prescribed_by : bigint
+    --
+    dosage : varchar(100)
+    frequency : varchar(100)
+    duration : varchar(100)
+    quantity : int
+    instructions : text
+    status : enum('active', 'completed', 'cancelled')
+    prescribed_at : timestamp
+}
+
+' Activity Logs Entity
+ENTITY ActivityLogs {
+    PK id : bigint
+    FK user_id : bigint
+    --
+    action : enum('create', 'update', 'delete')
+    entity_type : varchar(50)
+    entity_id : bigint
+    description : text
+    created_at : timestamp
+}
+
+' Sessions Entity
+ENTITY Sessions {
+    PK id : varchar(255)
+    --
+    user_id : bigint
+    ip_address : varchar(45)
+    user_agent : text
+    payload : text
+    last_activity : int
+}
+
+' Relationships
+
+' Users to Patients (1:1)
+Users "1" -- "1" Patients : "has"
+
+' Users to Doctors (1:1)
+Users "1" -- "1" Doctors : "has"
+
+' Users to Appointments (1:* as doctor)
+Users "1" -- "*" Appointments : "creates"
+
+' Users to Appointments (1:* as patient)
+Users "1" -- "*" Appointments : "has"
+
+' Users to Consultations (1:* as doctor)
+Users "1" -- "*" Consultations : "conducts"
+
+' Users to Consultations (1:* as patient)
+Users "1" -- "*" Consultations : "receives"
+
+' Users to Prescriptions (1:* as doctor)
+Users "1" -- "*" Prescriptions : "prescribes"
+
+' Users to Prescriptions (1:* as patient)
+Users "1" -- "*" Prescriptions : "receives"
+
+' Users to Medical Records (1:* as doctor)
+Users "1" -- "*" MedicalRecords : "creates"
+
+' Users to Medical Records (1:* as patient)
+Users "1" -- "*" MedicalRecords : "has"
+
+' Users to Doctor Availability Settings (1:* as doctor)
+Users "1" -- "*" DoctorAvailabilitySettings : "has"
+
+' Users to Doctor Availability Settings (1:* as set_by)
+Users "1" -- "*" DoctorAvailabilitySettings : "sets"
+
+' Users to Billings (1:* as patient)
+Users "1" -- "*" Billings : "has"
+
+' Users to Medications (1:* as created_by)
+Users "1" -- "*" Medications : "creates"
+
+' Users to Medications (1:* as updated_by)
+Users "1" -- "*" Medications : "updates"
+
+' Users to Inventory Logs (1:* as adjusted_by)
+Users "1" -- "*" InventoryLogs : "adjusts"
+
+' Users to Medication Prescriptions (1:* as prescribed_by)
+Users "1" -- "*" MedicationPrescriptions : "prescribes"
+
+' Users to Medication Prescriptions (1:* as patient)
+Users "1" -- "*" MedicationPrescriptions : "receives"
+
+' Users to Activity Logs (1:*)
+Users "1" -- "*" ActivityLogs : "performs"
+
+' Patients to Appointments (1:*)
+Patients "1" -- "*" Appointments : "has"
+
+' Patients to Consultations (1:*)
+Patients "1" -- "*" Consultations : "has"
+
+' Patients to Prescriptions (1:*)
+Patients "1" -- "*" Prescriptions : "has"
+
+' Patients to Medical Records (1:*)
+Patients "1" -- "*" MedicalRecords : "has"
+
+' Patients to Billings (1:*)
+Patients "1" -- "*" Billings : "has"
+
+' Patients to Medication Prescriptions (1:*)
+Patients "1" -- "*" MedicationPrescriptions : "has"
+
+' Doctors to Appointments (1:*)
+Doctors "1" -- "*" Appointments : "conducts"
+
+' Doctors to Consultations (1:*)
+Doctors "1" -- "*" Consultations : "conducts"
+
+' Doctors to Prescriptions (1:*)
+Doctors "1" -- "*" Prescriptions : "prescribes"
+
+' Doctors to Medical Records (1:*)
+Doctors "1" -- "*" MedicalRecords : "creates"
+
+' Doctors to Doctor Availability Settings (1:1)
+Doctors "1" -- "1" DoctorAvailabilitySettings : "has"
+
+' Appointments to Consultations (1:1)
+Appointments "1" -- "1" Consultations : "leads_to"
+
+' Appointments to Prescriptions (1:*)
+Appointments "1" -- "*" Prescriptions : "results_in"
+
+' Appointments to Medical Records (1:*)
+Appointments "1" -- "*" MedicalRecords : "generates"
+
+' Medications to Inventory Logs (1:*)
+Medications "1" -- "*" InventoryLogs : "tracks"
+
+' Medications to Medication Prescriptions (1:*)
+Medications "1" -- "*" MedicationPrescriptions : "prescribed_as"
+
+' Users to Sessions (1:*)
+Users "1" -- "*" Sessions : "has"
+
+@enduml 

@@ -1,0 +1,57 @@
+services:
+  # A Laravel web service
+  - type: web
+    name: iwellcare-web
+    env: php
+    plan: starter
+    buildCommand: chmod +x render-build.sh && ./render-build.sh
+    startCommand: vendor/bin/heroku-php-apache2 public/
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        value: https://iwellcare-web.onrender.com
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        fromDatabase:
+          name: iwellcare-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: iwellcare-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: iwellcare-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: iwellcare-db
+          property: username
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: iwellcare-db
+          property: password
+      - key: CACHE_DRIVER
+        value: file
+      - key: SESSION_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: LOG_CHANNEL
+        value: stack
+      - key: MAIL_MAILER
+        value: log
+      - key: FILESYSTEM_DISK
+        value: local
+
+databases:
+  - name: iwellcare-db
+    databaseName: iwellcare
+    user: iwellcare_user
+    plan: starter

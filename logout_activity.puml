@@ -1,0 +1,24 @@
+@startuml Logout Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Click logout button;
+
+:Confirm logout action;
+
+|System|
+
+:Destroy user session;
+
+:Clear authentication data;
+
+:Redirect to login page;
+
+stop
+
+@enduml

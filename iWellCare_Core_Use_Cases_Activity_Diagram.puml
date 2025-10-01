@@ -1,0 +1,242 @@
+@startuml iWellCare Core Use Cases Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+skinparam backgroundColor #FFFFFF
+skinparam activity {
+  BackgroundColor #E3F2FD
+  BorderColor #1976D2
+  FontColor #000000
+}
+skinparam activityDiamond {
+  BackgroundColor #FFF3E0
+  BorderColor #F57C00
+  FontColor #000000
+}
+
+title iWellCare Healthcare Management System - Core Use Cases Activity Diagram
+
+start
+
+:User accesses system;
+:Login Process;
+
+if (Authentication successful?) then (yes)
+  if (User Role?) then (Admin/Doctor)
+    :Access Admin/Doctor Dashboard;
+    
+    repeat
+      :Select action from menu;
+      
+      if (Action type?) then (Manage Appointments)
+        :Manage Appointment Process;
+        :Validate Doctor Availability;
+        :Check Time Conflicts;
+        :Send Appointment Notification;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Reschedule)
+            :Reschedule Appointment;
+          elseif (Cancel)
+            :Cancel Appointment;
+          endif
+        endif
+        
+      elseif (Manage Patient Information)
+        :Manage Patient Information Process;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Update Photo)
+            :Update Profile Photo;
+          elseif (Update Contact)
+            :Update Emergency Contact;
+          endif
+        endif
+        
+      elseif (Manage Consultation)
+        :Manage Consultation Process;
+        :Record Vital Signs;
+        :Create Prescription;
+        :Update Medical Record;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Follow-up)
+            :Schedule Follow-up;
+          elseif (Referral)
+            :Create Referral;
+          endif
+        endif
+        
+      elseif (Manage Medication)
+        :Manage Medication Process;
+        :Check Medication Inventory;
+        :Validate Prescription;
+        :Update Stock Levels;
+        
+      elseif (Manage Invoice)
+        :Manage Invoice Process;
+        :Calculate Service Charges;
+        :Generate Invoice Document;
+        :Process Payment;
+        
+      elseif (Manage Users)
+        :Manage User Process;
+        
+      elseif (Generate Reports)
+        :Generate Reports Process;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Export)
+            :Export Report;
+          elseif (Schedule)
+            :Schedule Recurring Report;
+          endif
+        endif
+        
+      elseif (Logout)
+        :Logout Process;
+        stop
+      endif
+      
+    repeat while (Continue using system?) is (yes)
+    
+  elseif (Staff)
+    :Access Staff Dashboard;
+    
+    repeat
+      :Select action from menu;
+      
+      if (Action type?) then (Manage Appointments)
+        :Manage Appointment Process;
+        :Validate Doctor Availability;
+        :Check Time Conflicts;
+        :Send Appointment Notification;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Reschedule)
+            :Reschedule Appointment;
+          elseif (Cancel)
+            :Cancel Appointment;
+          endif
+        endif
+        
+      elseif (Manage Patient Information)
+        :Manage Patient Information Process;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Update Photo)
+            :Update Profile Photo;
+          elseif (Update Contact)
+            :Update Emergency Contact;
+          endif
+        endif
+        
+      elseif (Manage Consultation)
+        :Manage Consultation Process;
+        :Record Vital Signs;
+        :Create Prescription;
+        :Update Medical Record;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Follow-up)
+            :Schedule Follow-up;
+          elseif (Referral)
+            :Create Referral;
+          endif
+        endif
+        
+      elseif (Manage Medication)
+        :Manage Medication Process;
+        :Check Medication Inventory;
+        :Validate Prescription;
+        :Update Stock Levels;
+        
+      elseif (Manage Invoice)
+        :Manage Invoice Process;
+        :Calculate Service Charges;
+        :Generate Invoice Document;
+        :Process Payment;
+        
+      elseif (Manage Users - Patients Only)
+        :Manage Patient User Process;
+        
+      elseif (Generate Reports)
+        :Generate Reports Process;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Export)
+            :Export Report;
+          elseif (Schedule)
+            :Schedule Recurring Report;
+          endif
+        endif
+        
+      elseif (Logout)
+        :Logout Process;
+        stop
+      endif
+      
+    repeat while (Continue using system?) is (yes)
+    
+  elseif (Patient)
+    :Access Patient Dashboard;
+    
+    repeat
+      :Select action from menu;
+      
+      if (Action type?) then (Manage My Information)
+        :Manage Patient Information Process;
+        
+        if (Additional action needed?) then (yes)
+          if (Action?) then (Update Photo)
+            :Update Profile Photo;
+          elseif (Update Contact)
+            :Update Emergency Contact;
+          endif
+        endif
+        
+      elseif (Book Appointment)
+        :Book Appointment Process;
+        :Validate Doctor Availability;
+        :Check Time Conflicts;
+        :Send Appointment Notification;
+        
+      elseif (Logout)
+        :Logout Process;
+        stop
+      endif
+      
+    repeat while (Continue using system?) is (yes)
+  endif
+  
+else (no)
+  :Display error message;
+  :Return to login;
+  stop
+endif
+
+note right
+  **Include Use Cases (Common Processes):**
+  - Validate Doctor Availability
+  - Check Time Conflicts
+  - Send Appointment Notification
+  - Record Vital Signs
+  - Create Prescription
+  - Update Medical Record
+  - Check Medication Inventory
+  - Validate Prescription
+  - Update Stock Levels
+  - Calculate Service Charges
+  - Generate Invoice Document
+  - Process Payment
+end note
+
+note left
+  **Extend Use Cases (Optional Features):**
+  - Reschedule/Cancel Appointment
+  - Schedule Follow-up/Create Referral
+  - Update Profile Photo/Emergency Contact
+  - Export/Schedule Reports
+end note
+
+@enduml

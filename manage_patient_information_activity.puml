@@ -1,0 +1,36 @@
+@startuml Manage Patient Information Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access personal profile section;
+
+|System|
+
+:View own patient information;
+
+|User|
+
+if (Edit Information?) then (yes)
+
+  :Edit personal details (contact, emergency contact, etc.);
+
+  |System|
+
+  :Validate changes;
+
+  :Save updated information;
+
+endif
+
+stop
+
+note right
+  Extends: Manage Patients Information (patient self-management subset)
+end note
+
+@enduml

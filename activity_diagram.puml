@@ -1,0 +1,47 @@
+@startuml Activity Diagram for iWellCare System Core Use Cases
+
+start
+
+:Login;
+
+if (User Role?) then (Admin/Doctor or Staff)
+  fork
+    :Manage Appointment;
+    note right
+      Extends: Book Appointment (for patients)
+    end note
+    fork again
+    :Manage Patients Information;
+    note right
+      Extends: Manage Patient Information (for patients)
+    end note
+    fork again
+    :Manage Consultation;
+    note right
+      Includes: Manage Medication
+    end note
+    fork again
+    :Manage Medication;
+    fork again
+    :Manage Invoice;
+    note right
+      Includes: Generate Reports
+    end note
+    fork again
+    :Manage User;
+    note right
+      Staff: Only patient users
+    end note
+    fork again
+    :Generate Reports;
+  end fork
+else (Patient)
+  :Manage Patient Information;
+  :Book Appointment;
+endif
+
+:Logout;
+
+stop
+
+@enduml

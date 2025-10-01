@@ -1,0 +1,534 @@
+@startuml Login Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Enter username and password;
+
+:Submit login form;
+
+|System|
+
+:Validate credentials;
+
+if (Valid?) then (yes)
+
+  :Authenticate user;
+
+  :Set session;
+
+  :Redirect to dashboard;
+
+else (no)
+
+  :Display error message;
+
+  :Return to login form;
+
+endif
+
+stop
+
+@enduml
+
+@startuml Manage Appointment Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access appointments section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display appointments list;
+
+  |User|
+
+  :View details if selected;
+
+else if (Create)
+
+  :Open create form;
+
+  :Fill appointment details (patient, doctor, date, time);
+
+  |System|
+
+  :Validate and save;
+
+  :Send notification;
+
+else if (Edit)
+
+  :Select appointment;
+
+  :Edit details;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete)
+
+  :Select appointment;
+
+  :Confirm deletion;
+
+  |System|
+
+  :Delete appointment;
+
+endif
+
+stop
+
+note right
+  Extends: Book Appointment (patient-initiated booking)
+end note
+
+@enduml
+
+@startuml Manage Patients Information Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access patients section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display patients list;
+
+  |User|
+
+  :View patient details if selected;
+
+else if (Create)
+
+  :Open create patient form;
+
+  :Fill patient information (name, contact, medical history);
+
+  |System|
+
+  :Validate and save;
+
+else if (Edit)
+
+  :Select patient;
+
+  :Edit patient information;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete)
+
+  :Select patient;
+
+  :Confirm deletion;
+
+  |System|
+
+  :Delete patient record;
+
+endif
+
+stop
+
+note right
+  Extends: Manage Patient Information (patient self-management)
+end note
+
+@enduml
+
+@startuml Manage Consultation Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access consultations section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display consultations list;
+
+  |User|
+
+  :View consultation details if selected;
+
+else if (Start New Consultation)
+
+  :Select patient and appointment;
+
+  :Perform physical examination;
+
+  :Record findings;
+
+  :Make diagnosis;
+
+  :Prescribe medication;
+
+  |System|
+
+  :Save consultation record;
+
+else if (Edit)
+
+  :Select consultation;
+
+  :Edit consultation details;
+
+  |System|
+
+  :Save changes;
+
+endif
+
+stop
+
+note right
+  Includes: Manage Medication (prescribing medications during consultation)
+end note
+
+@enduml
+
+@startuml Manage Medication Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access medications/inventory section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display medications list;
+
+  |User|
+
+  :View medication details if selected;
+
+else if (Add/Create)
+
+  :Open add medication form;
+
+  :Fill medication details (name, quantity, expiry);
+
+  |System|
+
+  :Validate and save to inventory;
+
+else if (Edit)
+
+  :Select medication;
+
+  :Edit details;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete/Archive)
+
+  :Select medication;
+
+  :Confirm action;
+
+  |System|
+
+  :Remove or archive medication;
+
+endif
+
+stop
+
+@enduml
+
+@startuml Manage Invoice Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access invoices section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display invoices list;
+
+  |User|
+
+  :View invoice details if selected;
+
+else if (Create)
+
+  :Select patient/consultation;
+
+  |System|
+
+  :Calculate charges;
+
+  :Generate invoice;
+
+  |User|
+
+  :Save invoice;
+
+else if (Edit)
+
+  :Select invoice;
+
+  :Edit invoice details;
+
+  |System|
+
+  :Save changes;
+
+else if (Generate PDF)
+
+  :Select invoice;
+
+  |System|
+
+  :Generate PDF report;
+
+  |User|
+
+  :Download or print;
+
+endif
+
+stop
+
+note right
+  Includes: Generate Reports (invoice-related reports and PDF generation)
+end note
+
+@enduml
+
+@startuml Manage User Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access users management section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display users list;
+
+  |User|
+
+  :View user details if selected;
+
+else if (Create)
+
+  :Open create user form;
+
+  :Fill user details (username, email, role);
+
+  |System|
+
+  :Validate and save;
+
+else if (Edit)
+
+  :Select user;
+
+  :Edit user information;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete)
+
+  :Select user;
+
+  :Confirm deletion;
+
+  |System|
+
+  :Delete user account;
+
+endif
+
+stop
+
+note right
+  Staff: Limited to managing patient users only
+end note
+
+@enduml
+
+@startuml Generate Reports Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access reports section;
+
+:Select report type (e.g., appointments, patients, consultations, inventory);
+
+:Set filters (date range, status, etc.);
+
+|System|
+
+:Generate report;
+
+:Display report results;
+
+|User|
+
+if (Export?) then (yes)
+
+  :Choose export format (PDF, Excel);
+
+  |System|
+
+  :Download report;
+
+endif
+
+stop
+
+@enduml
+
+@startuml Manage Patient Information Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access personal profile section;
+
+|System|
+
+:View own patient information;
+
+|User|
+
+if (Edit Information?) then (yes)
+
+  :Edit personal details (contact, emergency contact, etc.);
+
+  |System|
+
+  :Validate changes;
+
+  :Save updated information;
+
+endif
+
+stop
+
+note right
+  Extends: Manage Patients Information (patient self-management subset)
+end note
+
+@enduml
+
+@startuml Book Appointment Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access appointment booking section;
+
+:Select preferred doctor;
+
+:Choose available date and time slot;
+
+:Enter appointment reason/details;
+
+:Review booking details;
+
+:Confirm and submit booking;
+
+|System|
+
+:Receive booking confirmation and notification;
+
+stop
+
+note right
+  Extends: Manage Appointment (patient-initiated booking process)
+end note
+
+@enduml
+
+@startuml Logout Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Click logout button;
+
+:Confirm logout action;
+
+|System|
+
+:Destroy user session;
+
+:Clear authentication data;
+
+:Redirect to login page;
+
+stop
+
+@enduml

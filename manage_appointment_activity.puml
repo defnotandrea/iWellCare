@@ -1,0 +1,62 @@
+@startuml Manage Appointment Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access appointments section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display appointments list;
+
+  |User|
+
+  :View details if selected;
+
+else if (Create)
+
+  :Open create form;
+
+  :Fill appointment details (patient, doctor, date, time);
+
+  |System|
+
+  :Validate and save;
+
+  :Send notification;
+
+else if (Edit)
+
+  :Select appointment;
+
+  :Edit details;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete)
+
+  :Select appointment;
+
+  :Confirm deletion;
+
+  |System|
+
+  :Delete appointment;
+
+endif
+
+stop
+
+note right
+  Extends: Book Appointment (patient-initiated booking)
+end note
+
+@enduml

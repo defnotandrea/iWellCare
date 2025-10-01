@@ -1,0 +1,66 @@
+@startuml Manage Invoice Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access invoices section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display invoices list;
+
+  |User|
+
+  :View invoice details if selected;
+
+else if (Create)
+
+  :Select patient/consultation;
+
+  |System|
+
+  :Calculate charges;
+
+  :Generate invoice;
+
+  |User|
+
+  :Save invoice;
+
+else if (Edit)
+
+  :Select invoice;
+
+  :Edit invoice details;
+
+  |System|
+
+  :Save changes;
+
+else if (Generate PDF)
+
+  :Select invoice;
+
+  |System|
+
+  :Generate PDF report;
+
+  |User|
+
+  :Download or print;
+
+endif
+
+stop
+
+note right
+  Includes: Generate Reports (invoice-related reports and PDF generation)
+end note
+
+@enduml

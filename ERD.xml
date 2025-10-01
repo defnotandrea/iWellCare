@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.1.1">
+  <diagram id="hospital_erd" name="Hospital ERD">
+    <mxGraphModel dx="1042" dy="1696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="level1_label" value="🔐 LEVEL 1: USER MANAGEMENT - REGISTER &amp; AUTHENTICATE" style="text;html=1;strokeColor=none;fillColor=#E6F7FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="40" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="users" value="&lt;b&gt;users&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;username&lt;br&gt;email&lt;br&gt;password&lt;br&gt;first_name&lt;br&gt;last_name&lt;br&gt;middle_name&lt;br&gt;date_of_birth&lt;br&gt;gender&lt;br&gt;phone_number&lt;br&gt;street_address&lt;br&gt;city&lt;br&gt;state_province&lt;br&gt;postal_code&lt;br&gt;country&lt;br&gt;role&lt;br&gt;is_active&lt;br&gt;profile_photo&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="80" width="200" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="level2_label" value="👥 LEVEL 2: PROFILE CREATION - CREATE PROFILES" style="text;html=1;strokeColor=none;fillColor=#F9F9F9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="40" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="patients" value="&lt;b&gt;patients&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;user_id FK&lt;br&gt;first_name&lt;br&gt;last_name&lt;br&gt;contact&lt;br&gt;email&lt;br&gt;address&lt;br&gt;date_of_birth&lt;br&gt;gender&lt;br&gt;blood_type&lt;br&gt;emergency_contact&lt;br&gt;emergency_contact_phone&lt;br&gt;medical_history&lt;br&gt;allergies&lt;br&gt;current_medications&lt;br&gt;insurance_provider&lt;br&gt;insurance_number&lt;br&gt;registration_date&lt;br&gt;is_active&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="80" width="220" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="doctors" value="&lt;b&gt;doctors&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;user_id FK&lt;br&gt;specialization&lt;br&gt;license_number&lt;br&gt;years_of_experience&lt;br&gt;qualifications&lt;br&gt;bio&lt;br&gt;status&lt;br&gt;consultation_fee&lt;br&gt;available_days&lt;br&gt;available_hours&lt;br&gt;contact_number&lt;br&gt;emergency_contact&lt;br&gt;address&lt;br&gt;city&lt;br&gt;state&lt;br&gt;postal_code&lt;br&gt;country&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="750" y="80" width="220" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="appointments" value="&lt;b&gt;appointments&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;patient_id FK&lt;br&gt;doctor_id FK&lt;br&gt;appointment_date&lt;br&gt;appointment_time&lt;br&gt;type&lt;br&gt;status&lt;br&gt;notes&lt;br&gt;symptoms&lt;br&gt;priority&lt;br&gt;duration&lt;br&gt;room_number&lt;br&gt;created_by FK&lt;br&gt;updated_by FK&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="520" width="220" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="consultations" value="&lt;b&gt;consultations&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;appointment_id FK&lt;br&gt;patient_id FK&lt;br&gt;doctor_id FK&lt;br&gt;consultation_date&lt;br&gt;consultation_time&lt;br&gt;status&lt;br&gt;chief_complaint&lt;br&gt;present_illness&lt;br&gt;past_medical_history&lt;br&gt;family_history&lt;br&gt;social_history&lt;br&gt;clinical_measurements&lt;br&gt;symptoms&lt;br&gt;diagnosis&lt;br&gt;treatment_plan&lt;br&gt;prescription&lt;br&gt;notes&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="520" width="240" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="level5_label" value="📋 LEVEL 5: RECORD KEEPING - MAINTAIN RECORDS" style="text;html=1;strokeColor=none;fillColor=#FFFBE6;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="940" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="medical_records" value="&lt;b&gt;medical_records&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;patient_id FK&lt;br&gt;doctor_id FK&lt;br&gt;appointment_id FK&lt;br&gt;record_number&lt;br&gt;record_date&lt;br&gt;chief_complaint&lt;br&gt;present_illness&lt;br&gt;past_medical_history&lt;br&gt;family_history&lt;br&gt;social_history&lt;br&gt;review_of_systems&lt;br&gt;physical_examination&lt;br&gt;diagnosis&lt;br&gt;treatment_plan&lt;br&gt;medications_prescribed&lt;br&gt;lab_results&lt;br&gt;imaging_results&lt;br&gt;clinical_measurements&lt;br&gt;allergies&lt;br&gt;notes&lt;br&gt;status&lt;br&gt;record_type&lt;br&gt;is_confidential&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="980" width="260" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="prescriptions" value="&lt;b&gt;prescriptions&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;patient_id FK&lt;br&gt;doctor_id FK&lt;br&gt;appointment_id FK&lt;br&gt;prescription_number&lt;br&gt;prescription_date&lt;br&gt;diagnosis&lt;br&gt;notes&lt;br&gt;instructions&lt;br&gt;status&lt;br&gt;valid_until&lt;br&gt;is_printed&lt;br&gt;printed_at&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="380" y="980" width="220" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="level6_label" value="💰 LEVEL 6: FINANCIAL MANAGEMENT - PROCESS BILLING" style="text;html=1;strokeColor=none;fillColor=#FFFFE6;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="1040" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="billings" value="&lt;b&gt;billings&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;patient_id FK&lt;br&gt;appointment_id FK&lt;br&gt;amount&lt;br&gt;consultation_fee&lt;br&gt;medication_fee&lt;br&gt;laboratory_fee&lt;br&gt;other_fees&lt;br&gt;total_amount&lt;br&gt;status&lt;br&gt;payment_date&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="1080" width="220" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="support_label" value="🔧 SUPPORTING SYSTEMS - MANAGE SUPPORT" style="text;html=1;strokeColor=none;fillColor=#F2F2F2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="950" y="80" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory" value="&lt;b&gt;inventory&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;name&lt;br&gt;description&lt;br&gt;category&lt;br&gt;quantity&lt;br&gt;reorder_level&lt;br&gt;expiration_date&lt;br&gt;unit_price&lt;br&gt;supplier&lt;br&gt;location&lt;br&gt;batch_number&lt;br&gt;notes&lt;br&gt;created_by FK&lt;br&gt;updated_by FK&lt;br&gt;last_updated&lt;br&gt;is_active&lt;br&gt;archived&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="950" y="120" width="240" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="otp_codes" value="&lt;b&gt;otp_codes&lt;/b&gt;&lt;br&gt;id PK&lt;br&gt;email&lt;br&gt;code&lt;br&gt;type&lt;br&gt;expires_at&lt;br&gt;is_used&lt;br&gt;created_at&lt;br&gt;updated_at" style="shape=table;html=1;whiteSpace=wrap;container=1;recursiveResize=0;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="120" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_users_patients" parent="1" source="users" target="patients" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_users_doctors" parent="1" source="users" target="doctors" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_patients_appointments" parent="1" source="patients" target="appointments" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_doctors_appointments" parent="1" source="doctors" target="appointments" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_appointments_consultations" parent="1" source="appointments" target="consultations" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_appointments_billings" parent="1" source="appointments" target="billings" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_consultations_medical_records" parent="1" source="consultations" target="medical_records" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_consultations_prescriptions" parent="1" source="consultations" target="prescriptions" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_users_inventory" parent="1" source="users" target="inventory" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_users_otps" parent="1" source="users" target="otp_codes" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

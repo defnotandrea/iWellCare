@@ -1,0 +1,36 @@
+@startuml Login Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Enter username and password;
+
+:Submit login form;
+
+|System|
+
+:Validate credentials;
+
+if (Valid?) then (yes)
+
+  :Authenticate user;
+
+  :Set session;
+
+  :Redirect to dashboard;
+
+else (no)
+
+  :Display error message;
+
+  :Return to login form;
+
+endif
+
+stop
+
+@enduml

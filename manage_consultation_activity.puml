@@ -1,0 +1,56 @@
+@startuml Manage Consultation Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access consultations section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display consultations list;
+
+  |User|
+
+  :View consultation details if selected;
+
+else if (Start New Consultation)
+
+  :Select patient and appointment;
+
+  :Perform physical examination;
+
+  :Record findings;
+
+  :Make diagnosis;
+
+  :Prescribe medication;
+
+  |System|
+
+  :Save consultation record;
+
+else if (Edit)
+
+  :Select consultation;
+
+  :Edit consultation details;
+
+  |System|
+
+  :Save changes;
+
+endif
+
+stop
+
+note right
+  Includes: Manage Medication (prescribing medications during consultation)
+end note
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml Book Appointment Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access appointment booking section;
+
+:Select preferred doctor;
+
+:Choose available date and time slot;
+
+:Enter appointment reason/details;
+
+:Review booking details;
+
+:Confirm and submit booking;
+
+|System|
+
+:Receive booking confirmation and notification;
+
+stop
+
+note right
+  Extends: Manage Appointment (patient-initiated booking process)
+end note
+
+@enduml

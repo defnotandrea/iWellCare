@@ -1,0 +1,29 @@
+[10-Jul-2025 20:38:17 Europe/Berlin] Reports error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 6
+[10-Jul-2025 20:38:17 Europe/Berlin] Reports error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 6
+[10-Jul-2025 20:38:33 Europe/Berlin] Reports error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 6
+[10-Jul-2025 20:38:33 Europe/Berlin] Reports error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 6
+[11-Jul-2025 02:13:33 Europe/Berlin] Activity logging failed: Unknown column 'details' in 'field list'
+[11-Jul-2025 02:13:33 Europe/Berlin] Failed to delete appointments for staff 7: Unknown column 'created_by' in 'where clause'
+[11-Jul-2025 02:13:33 Europe/Berlin] Failed to delete consultations for staff 7: Unknown column 'created_by' in 'where clause'
+[11-Jul-2025 02:13:33 Europe/Berlin] Failed to delete billing for staff 7: Table 'iwellcare.billing' doesn't exist
+[11-Jul-2025 02:13:33 Europe/Berlin] Failed to delete invoices for staff 7: Unknown column 'created_by' in 'where clause'
+[11-Jul-2025 02:13:33 Europe/Berlin] Failed to delete inventory transactions for staff 7: Table 'iwellcare.inventory_transactions' doesn't exist
+2025-07-11 04:54:56 - Exception: mysqli_stmt::bind_param(): Argument #4 cannot be passed by reference in C:\xampp\htdocs\iWellCare\public\doctor_admin\edit_staff.php on line 91
+Failed to log exception to database: Table 'iwellcare.error_logs' doesn't exist2025-07-17 17:32:23 - Error [2]: Undefined array key "description" in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:32:23 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:32:23 - Error [2]: Undefined array key "description" in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:32:23 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:32:23 - Error [2]: Undefined array key "description" in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:32:23 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:32:23 - Error [2]: Undefined array key "description" in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:32:23 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\inventory.php on line 488
+2025-07-17 17:42:14 - Exception: Call to undefined function render_page_header() in C:\xampp\htdocs\iWellCare\public\doctor_admin\consultation_workflow.php on line 89
+Failed to log exception to database: Unknown column 'message' in 'field list'2025-07-17 17:42:14 - Exception: Call to undefined function render_page_header() in C:\xampp\htdocs\iWellCare\public\doctor_admin\consultation_workflow.php on line 89
+Failed to log exception to database: Unknown column 'message' in 'field list'[17-Jul-2025 17:47:05 Europe/Berlin] PHP Fatal error:  Cannot redeclare render_stats_grid() (previously declared in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\page_header.php:39) in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\stats_card.php on line 108
+[17-Jul-2025 17:47:05 Europe/Berlin] PHP Fatal error:  Cannot redeclare render_stats_grid() (previously declared in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\page_header.php:39) in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\stats_card.php on line 108
+2025-07-17 17:47:27 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\invoices.php on line 250
+2025-07-17 17:47:27 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\invoices.php on line 304
+2025-07-17 17:47:27 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\invoices.php on line 250
+2025-07-17 17:47:27 - Error [8192]: htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\iWellCare\public\doctor_admin\invoices.php on line 304
+[17-Jul-2025 17:48:18 Europe/Berlin] PHP Fatal error:  Cannot redeclare render_stats_grid() (previously declared in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\page_header.php:39) in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\stats_card.php on line 108
+[17-Jul-2025 17:48:18 Europe/Berlin] PHP Fatal error:  Cannot redeclare render_stats_grid() (previously declared in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\page_header.php:39) in C:\xampp\htdocs\iWellCare\public\doctor_admin\includes\stats_card.php on line 108

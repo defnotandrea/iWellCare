@@ -1,0 +1,60 @@
+@startuml Manage Patients Information Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access patients section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display patients list;
+
+  |User|
+
+  :View patient details if selected;
+
+else if (Create)
+
+  :Open create patient form;
+
+  :Fill patient information (name, contact, medical history);
+
+  |System|
+
+  :Validate and save;
+
+else if (Edit)
+
+  :Select patient;
+
+  :Edit patient information;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete)
+
+  :Select patient;
+
+  :Confirm deletion;
+
+  |System|
+
+  :Delete patient record;
+
+endif
+
+stop
+
+note right
+  Extends: Manage Patient Information (patient self-management)
+end note
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml Generate Reports Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access reports section;
+
+:Select report type (e.g., appointments, patients, consultations, inventory);
+
+:Set filters (date range, status, etc.);
+
+|System|
+
+:Generate report;
+
+:Display report results;
+
+|User|
+
+if (Export?) then (yes)
+
+  :Choose export format (PDF, Excel);
+
+  |System|
+
+  :Download report;
+
+endif
+
+stop
+
+@enduml

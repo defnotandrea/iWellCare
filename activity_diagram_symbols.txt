@@ -1,0 +1,111 @@
+Activity Diagram Symbols for iWellCare System Use Cases
+
+Each use case has User and System swimlanes with activities, decisions, and notes for include/extend relationships.
+
+1. Login Use Case
+- Start
+- User: Enter username and password; Submit login form
+- System: Validate credentials; If valid: Authenticate user; Set session; Redirect to dashboard; Else: Display error message; Return to login form
+- Stop
+
+2. Manage Appointment Use Case
+- Start
+- User: Access appointments section
+- Decision: Action? (View List / Create / Edit / Delete)
+- If View List: System: Display appointments list; User: View details if selected
+- If Create: User: Open create form; Fill appointment details; System: Validate and save; Send notification
+- If Edit: User: Select appointment; Edit details; System: Save changes
+- If Delete: User: Select appointment; Confirm deletion; System: Delete appointment
+- Stop
+- Note: Extends Book Appointment (patient-initiated booking)
+
+3. Manage Patients Information Use Case
+- Start
+- User: Access patients section
+- Decision: Action? (View List / Create / Edit / Delete)
+- If View List: System: Display patients list; User: View patient details if selected
+- If Create: User: Open create patient form; Fill patient information; System: Validate and save
+- If Edit: User: Select patient; Edit patient information; System: Save changes
+- If Delete: User: Select patient; Confirm deletion; System: Delete patient record
+- Stop
+- Note: Extends Manage Patient Information (patient self-management)
+
+4. Manage Consultation Use Case
+- Start
+- User: Access consultations section
+- Decision: Action? (View List / Start New Consultation / Edit)
+- If View List: System: Display consultations list; User: View consultation details if selected
+- If Start New: User: Select patient and appointment; Perform physical examination; Record findings; Make diagnosis; Prescribe medication; System: Save consultation record
+- If Edit: User: Select consultation; Edit consultation details; System: Save changes
+- Stop
+- Note: Includes Manage Medication (prescribing medications during consultation)
+
+5. Manage Medication Use Case
+- Start
+- User: Access medications/inventory section
+- Decision: Action? (View List / Add/Create / Edit / Delete/Archive)
+- If View List: System: Display medications list; User: View medication details if selected
+- If Add/Create: User: Open add medication form; Fill medication details; System: Validate and save to inventory
+- If Edit: User: Select medication; Edit details; System: Save changes
+- If Delete/Archive: User: Select medication; Confirm action; System: Remove or archive medication
+- Stop
+
+6. Manage Invoice Use Case
+- Start
+- User: Access invoices section
+- Decision: Action? (View List / Create / Edit / Generate PDF)
+- If View List: System: Display invoices list; User: View invoice details if selected
+- If Create: User: Select patient/consultation; System: Calculate charges; Generate invoice; User: Save invoice
+- If Edit: User: Select invoice; Edit invoice details; System: Save changes
+- If Generate PDF: User: Select invoice; System: Generate PDF report; User: Download or print
+- Stop
+- Note: Includes Generate Reports (invoice-related reports and PDF generation)
+
+7. Manage User Use Case
+- Start
+- User: Access users management section
+- Decision: Action? (View List / Create / Edit / Delete)
+- If View List: System: Display users list; User: View user details if selected
+- If Create: User: Open create user form; Fill user details; System: Validate and save
+- If Edit: User: Select user; Edit user information; System: Save changes
+- If Delete: User: Select user; Confirm deletion; System: Delete user account
+- Stop
+- Note: Staff limited to managing patient users only
+
+8. Generate Reports Use Case
+- Start
+- User: Access reports section; Select report type; Set filters
+- System: Generate report; Display report results
+- User: If Export: Choose export format; System: Download report
+- Stop
+
+9. Manage Patient Information Use Case
+- Start
+- User: Access personal profile section
+- System: View own patient information
+- User: If Edit: Edit personal details; System: Validate changes; Save updated information
+- Stop
+- Note: Extends Manage Patients Information (patient self-management subset)
+
+10. Book Appointment Use Case
+- Start
+- User: Access appointment booking section; Select preferred doctor; Choose available date and time slot; Enter appointment reason/details; Review booking details; Confirm and submit booking
+- System: Receive booking confirmation and notification
+- Stop
+- Note: Extends Manage Appointment (patient-initiated booking process)
+
+11. Logout Use Case
+- Start
+- User: Click logout button; Confirm logout action
+- System: Destroy user session; Clear authentication data; Redirect to login page
+- Stop
+
+Symbols:
+- Swimlanes: |User| and |System| (vertical columns)
+- Start: Circle at the top of User swimlane
+- Activities: Rectangles with :Action; in the appropriate swimlane
+- Decisions: Diamonds with if (condition) then (option) ... else ... endif
+- Stop: Encircled Stop at the bottom of System swimlane
+- Notes: Attached notes with note right ... end note
+- Font: Times New Roman, 12pt
+- Flow: Arrows connect activities across swimlanes

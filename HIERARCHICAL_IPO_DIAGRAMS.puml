@@ -1,0 +1,685 @@
+@startuml iWellCare_Admin_Doctor_Hierarchical_IPO
+
+!define RECTANGLE class
+!define ARROW -->
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 10
+skinparam classFontName "Times New Roman"
+skinparam classFontSize 10
+skinparam packageFontName "Times New Roman"
+skinparam packageFontSize 12
+skinparam titleFontName "Times New Roman"
+skinparam titleFontSize 14
+
+title iWellCare Healthcare Management System - Admin/Doctor Hierarchical IPO Model
+
+package "Admin/Doctor Access Control" {
+    RECTANGLE "Log in" as login {
+        Input: Username/Email, Password
+        Process: Authentication, Role Verification
+        Output: Access to Admin/Doctor Dashboard
+    }
+}
+
+package "Admin/Doctor Dashboard" {
+    RECTANGLE "Admin/Doctor Dashboard" as dashboard {
+        Input: User Credentials, Role Permissions
+        Process: Session Management, Access Control
+        Output: Admin/Doctor Dashboard Interface
+    }
+}
+
+package "Core Functions" {
+    package "1. Home" {
+        RECTANGLE "Update Profile" as profile {
+            Input: Personal Info, Contact Details, Photo, Medical License
+            Process: Validation, Upload, Update, License Verification
+            Output: Updated Doctor Profile, Success Message
+        }
+    }
+    
+    package "2. Patient Management" {
+        RECTANGLE "View All Patients" as view_patients {
+            Input: Search Criteria, Status Filter, Patient Data
+            Process: Database Query, Filtering, Sorting, Pagination
+            Output: Patient List, Search Results, Patient Count
+        }
+        
+        RECTANGLE "Patient Registration Approval" as approve_patients {
+            Input: Patient ID, Approval Decision, Admin Notes
+            Process: Account Review, Status Update, Email Notification
+            Output: Approved Patient Account, Welcome Email
+        }
+        
+        RECTANGLE "Patient Medical History" as patient_history {
+            Input: Patient ID, Date Range, Medical Record Type
+            Process: Medical Record Retrieval, History Compilation
+            Output: Complete Medical History, Treatment Timeline
+        }
+    }
+    
+    package "3. Appointment Management" {
+        RECTANGLE "View Appointments" as view_appointments {
+            Input: Date Range, Status Filter, Patient Filter, Priority
+            Process: Appointment Retrieval, Filtering, Calendar Integration
+            Output: Appointment List, Calendar View, Status Summary
+        }
+        
+        RECTANGLE "Confirm Appointments" as confirm_appointments {
+            Input: Appointment ID, Confirmation Status, Doctor Notes
+            Process: Status Update, Patient Notification, Calendar Update
+            Output: Confirmed Appointment, Patient Notification
+        }
+        
+        RECTANGLE "Reschedule Appointments" as reschedule_appointments {
+            Input: Appointment ID, New Date/Time, Reason
+            Process: Conflict Detection, Rescheduling, Patient Notification
+            Output: Rescheduled Appointment, Patient Notification
+        }
+    }
+    
+    package "4. Medical Consultations" {
+        RECTANGLE "View Consultations" as view_consultations {
+            Input: Date Range, Patient Filter, Status Filter, Type
+            Process: Consultation Retrieval, Filtering, Medical Record Access
+            Output: Consultation List, Medical Summary, Patient Status
+        }
+        
+        RECTANGLE "Create Consultation" as create_consultation {
+            Input: Patient ID, Appointment Reference, Symptoms, Vital Signs
+            Process: Consultation Setup, Medical Record Creation
+            Output: New Consultation Record, Medical Assessment
+        }
+        
+        RECTANGLE "Update Consultation" as update_consultation {
+            Input: Consultation ID, Diagnosis, Treatment Plan, Prescriptions
+            Process: Medical Data Entry, Validation, Record Update
+            Output: Updated Consultation, Medical Record, Prescription
+        }
+    }
+    
+    package "5. Prescription Management" {
+        RECTANGLE "View Prescriptions" as view_prescriptions {
+            Input: Patient Filter, Date Range, Status Filter, Medication Type
+            Process: Prescription Retrieval, Filtering, Drug Interaction Check
+            Output: Prescription List, Medication Summary, Interaction Alerts
+        }
+        
+        RECTANGLE "Create Prescription" as create_prescription {
+            Input: Patient ID, Medication Details, Dosage, Instructions
+            Process: Prescription Validation, Drug Interaction Check
+            Output: New Prescription, Patient Instructions
+        }
+        
+        RECTANGLE "Manage Prescription Status" as manage_prescriptions {
+            Input: Prescription ID, Status Update, Completion Notes
+            Process: Status Update, Refill Processing, Patient Notification
+            Output: Updated Prescription Status, Refill Authorization
+        }
+    }
+    
+    package "6. Staff Management" {
+        RECTANGLE "View Staff Members" as view_staff {
+            Input: Staff Filter, Role Filter, Status Filter, Department
+            Process: Staff Data Retrieval, Filtering, Role Assignment Check
+            Output: Staff List, Role Summary, Department Overview
+        }
+        
+        RECTANGLE "Add Staff Member" as add_staff {
+            Input: Staff Information, Role Assignment, Department, Permissions
+            Process: Data Validation, Role Assignment, Permission Setup
+            Output: New Staff Account, Welcome Email, Dashboard Access
+        }
+        
+        RECTANGLE "Manage Staff Permissions" as manage_staff {
+            Input: Staff ID, Permission Updates, Role Changes
+            Process: Permission Validation, Role Update, Access Control
+            Output: Updated Staff Permissions, Access Log, Security Audit
+        }
+    }
+    
+    package "7. Reports & Analytics" {
+        RECTANGLE "Generate Patient Reports" as patient_reports {
+            Input: Report Type, Date Range, Patient Filter, Medical Criteria
+            Process: Data Aggregation, Statistical Analysis, Report Generation
+            Output: Patient Report, Health Statistics, Trend Analysis
+        }
+        
+        RECTANGLE "Financial Reports" as financial_reports {
+            Input: Date Range, Service Type, Payment Status, Revenue
+            Process: Financial Data Aggregation, Revenue Analysis
+            Output: Financial Report, Revenue Summary, Payment Statistics
+        }
+        
+        RECTANGLE "Export Reports" as export_reports {
+            Input: Report Data, Export Format, File Options
+            Process: Data Formatting, File Generation, Download Preparation
+            Output: Exported File, Download Link, Email Attachment
+        }
+    }
+    
+    package "8. System Settings" {
+        RECTANGLE "Manage Medical Categories" as manage_categories {
+            Input: Category Info, Medical Specialties, Service Types
+            Process: Category Validation, Database Update, Relationship Management
+            Output: Updated Medical Categories, Category Tree, Service Mapping
+        }
+        
+        RECTANGLE "System Configuration" as system_config {
+            Input: System Parameters, Notification Settings, Security Options
+            Process: Configuration Validation, System Update, Cache Refresh
+            Output: Updated System Settings, Configuration Confirmation
+        }
+        
+        RECTANGLE "Change Password" as change_password {
+            Input: Current Password, New Password, Confirmation
+            Process: Password Verification, Hash Generation, Security Update
+            Output: Password Changed, Success Message, Security Log
+        }
+        
+        RECTANGLE "Log out" as logout {
+            Input: Logout Request, Session Data
+            Process: Session Termination, Cache Clear, Logout Log
+            Output: Logged Out, Redirect to Login
+        }
+    }
+}
+
+' Hierarchical relationships
+login --> dashboard
+dashboard --> profile
+dashboard --> view_patients
+dashboard --> approve_patients
+dashboard --> patient_history
+dashboard --> view_appointments
+dashboard --> confirm_appointments
+dashboard --> reschedule_appointments
+dashboard --> view_consultations
+dashboard --> create_consultation
+dashboard --> update_consultation
+dashboard --> view_prescriptions
+dashboard --> create_prescription
+dashboard --> manage_prescriptions
+dashboard --> view_staff
+dashboard --> add_staff
+dashboard --> manage_staff
+dashboard --> patient_reports
+dashboard --> financial_reports
+dashboard --> export_reports
+dashboard --> manage_categories
+dashboard --> system_config
+dashboard --> change_password
+dashboard --> logout
+
+@enduml
+
+@startuml iWellCare_Staff_Hierarchical_IPO
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 10
+skinparam classFontName "Times New Roman"
+skinparam classFontSize 10
+skinparam packageFontName "Times New Roman"
+skinparam packageFontSize 12
+skinparam titleFontName "Times New Roman"
+skinparam titleFontSize 14
+
+title iWellCare Healthcare Management System - Staff Hierarchical IPO Model
+
+package "Staff Access Control" {
+    RECTANGLE "Log in" as staff_login {
+        Input: Username/Email, Password
+        Process: Authentication, Role Verification
+        Output: Access to Staff Dashboard
+    }
+}
+
+package "Staff Dashboard" {
+    RECTANGLE "Staff Dashboard" as staff_dashboard {
+        Input: User Credentials, Role Permissions
+        Process: Session Management, Access Control
+        Output: Staff Dashboard Interface
+    }
+}
+
+package "Core Functions" {
+    package "1. Home" {
+        RECTANGLE "Update Profile" as staff_profile {
+            Input: Personal Info, Contact Details, Photo, Staff ID
+            Process: Validation, Upload, Update, Staff Verification
+            Output: Updated Staff Profile, Success Message
+        }
+    }
+    
+    package "2. Appointment Management" {
+        RECTANGLE "View Appointments" as view_appointments {
+            Input: Date Range, Status Filter, Doctor Filter, Patient Filter
+            Process: Appointment Retrieval, Filtering, Calendar Integration
+            Output: Appointment List, Calendar View, Status Summary
+        }
+        
+        RECTANGLE "Create Appointment" as create_appointment {
+            Input: Patient Info, Doctor Selection, Date/Time, Appointment Type
+            Process: Availability Check, Conflict Detection, Patient Notification
+            Output: New Appointment, Confirmation, Patient Alert
+        }
+        
+        RECTANGLE "Confirm Appointment" as confirm_appointment {
+            Input: Appointment ID, Confirmation Status, Staff Notes
+            Process: Status Update, Patient Notification, Calendar Update
+            Output: Confirmed Appointment, Patient Notification, Calendar Entry
+        }
+        
+        RECTANGLE "Complete Appointment" as complete_appointment {
+            Input: Appointment ID, Completion Notes, Follow-up Requirements
+            Process: Status Update, Medical Record Creation, Follow-up Scheduling
+            Output: Completed Appointment, Medical Record, Follow-up Schedule
+        }
+    }
+    
+    package "3. Patient Management" {
+        RECTANGLE "View Patients" as view_patients {
+            Input: Search Criteria, Filter Options, Status Filter, Department
+            Process: Patient Data Retrieval, Filtering, Medical Record Access
+            Output: Patient List, Search Results, Medical Summary
+        }
+        
+        RECTANGLE "Add Patient" as add_patient {
+            Input: Patient Info, Medical History, Contact Details, Insurance
+            Process: Validation, Duplicate Check, Insurance Verification
+            Output: New Patient Record, Patient ID, Welcome Setup
+        }
+        
+        RECTANGLE "Edit Patient" as edit_patient {
+            Input: Patient ID, Updated Information, Medical Updates
+            Process: Record Retrieval, Data Update, Medical Record Sync
+            Output: Updated Patient Record, Modification Log, Medical History
+        }
+    }
+    
+    package "4. Medical Consultations" {
+        RECTANGLE "View Consultations" as view_consultations {
+            Input: Date Range, Doctor Filter, Status Filter, Patient Filter
+            Process: Consultation Retrieval, Filtering, Medical Record Access
+            Output: Consultation List, Medical Summary, Patient Status
+        }
+        
+        RECTANGLE "Create Consultation" as create_consultation {
+            Input: Patient ID, Doctor ID, Appointment Reference, Assessment
+            Process: Consultation Setup, Medical Record Creation, Patient Assessment
+            Output: New Consultation, Medical Assessment, Treatment Plan
+        }
+        
+        RECTANGLE "Physical Examination" as physical_exam {
+            Input: Vital Signs, Physical Findings, Notes, Measurements
+            Process: Data Entry, Validation, Medical Record Update, Health Assessment
+            Output: Physical Exam Record, Updated Consultation, Health Metrics
+        }
+        
+        RECTANGLE "Diagnosis Entry" as diagnosis_entry {
+            Input: Diagnosis, Treatment Plan, Prescriptions, Follow-up
+            Process: Medical Data Entry, Validation, Record Update, Prescription Setup
+            Output: Diagnosis Record, Treatment Plan, Prescription, Follow-up
+        }
+    }
+    
+    package "5. Prescription Management" {
+        RECTANGLE "View Prescriptions" as view_prescriptions {
+            Input: Patient Filter, Date Range, Status Filter, Medication Type
+            Process: Prescription Retrieval, Filtering, Drug Information
+            Output: Prescription List, Medication Summary, Patient Instructions
+        }
+        
+        RECTANGLE "Create Prescription" as create_prescription {
+            Input: Medication Details, Dosage, Instructions, Duration, Patient ID
+            Process: Prescription Validation, Drug Interaction Check
+            Output: New Prescription, Patient Instructions, Pharmacy Notification
+        }
+    }
+    
+    package "6. Reports & Analytics" {
+        RECTANGLE "Generate Reports" as generate_reports {
+            Input: Report Type, Date Range, Parameters, Department Filter
+            Process: Data Aggregation, Report Generation, Analysis
+            Output: Formatted Report, Export Options, Data Insights
+        }
+        
+        RECTANGLE "Export Reports" as export_reports {
+            Input: Report Data, Export Format, File Options, Delivery Method
+            Process: Data Formatting, File Generation, Email Setup
+            Output: Exported File, Download Link, Email Delivery
+        }
+    }
+    
+    package "7. Inventory Management" {
+        RECTANGLE "View Inventory" as view_inventory {
+            Input: Category Filter, Stock Level Filter, Expiry Date, Supplier
+            Process: Inventory Retrieval, Stock Level Calculation, Expiry Check
+            Output: Inventory List, Stock Levels, Expiry Alerts, Supplier Info
+        }
+        
+        RECTANGLE "Manage Inventory" as manage_inventory {
+            Input: Item Information, Stock Updates, Pricing, Supplier Details
+            Process: Inventory Validation, Stock Adjustment, Supplier Management
+            Output: Updated Inventory, Stock Alerts, Price Changes, Supplier Updates
+        }
+    }
+    
+    package "8. Billing & Payments" {
+        RECTANGLE "View Bills" as view_bills {
+            Input: Patient Filter, Date Range, Status Filter, Payment Method
+            Process: Billing Data Retrieval, Filtering, Payment Status Check
+            Output: Bill List, Payment Summary, Outstanding Amounts
+        }
+        
+        RECTANGLE "Create Bill" as create_bill {
+            Input: Patient ID, Services, Amounts, Payment Terms, Insurance
+            Process: Bill Calculation, Validation, Insurance Processing
+            Output: New Bill, Invoice, Insurance Claim, Payment Instructions
+        }
+        
+        RECTANGLE "Process Payment" as process_payment {
+            Input: Bill ID, Payment Amount, Payment Method, Transaction Details
+            Process: Payment Validation, Status Update, Receipt Generation
+            Output: Payment Receipt, Updated Bill Status, Financial Record
+        }
+    }
+}
+
+' Hierarchical relationships
+staff_login --> staff_dashboard
+staff_dashboard --> staff_profile
+staff_dashboard --> view_appointments
+staff_dashboard --> create_appointment
+staff_dashboard --> confirm_appointment
+staff_dashboard --> complete_appointment
+staff_dashboard --> view_patients
+staff_dashboard --> add_patient
+staff_dashboard --> edit_patient
+staff_dashboard --> view_consultations
+staff_dashboard --> create_consultation
+staff_dashboard --> physical_exam
+staff_dashboard --> diagnosis_entry
+staff_dashboard --> view_prescriptions
+staff_dashboard --> create_prescription
+staff_dashboard --> generate_reports
+staff_dashboard --> export_reports
+staff_dashboard --> view_inventory
+staff_dashboard --> manage_inventory
+staff_dashboard --> view_bills
+staff_dashboard --> create_bill
+staff_dashboard --> process_payment
+
+@enduml
+
+@startuml iWellCare_Patient_Hierarchical_IPO
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 10
+skinparam classFontName "Times New Roman"
+skinparam classFontSize 10
+skinparam packageFontName "Times New Roman"
+skinparam packageFontSize 12
+skinparam titleFontName "Times New Roman"
+skinparam titleFontSize 14
+
+title iWellCare Healthcare Management System - Patient Hierarchical IPO Model
+
+package "Patient Access Control" {
+    RECTANGLE "Log in" as patient_login {
+        Input: Username/Email, Password
+        Process: Authentication, Role Verification
+        Output: Access to Patient Dashboard
+    }
+}
+
+package "Patient Dashboard" {
+    RECTANGLE "Patient Dashboard" as patient_dashboard {
+        Input: User Credentials, Role Permissions
+        Process: Session Management, Access Control
+        Output: Patient Dashboard Interface
+    }
+}
+
+package "Core Functions" {
+    package "1. Home" {
+        RECTANGLE "View Dashboard" as view_dashboard {
+            Input: Patient ID, Current Date, Health Status
+            Process: Data Retrieval, Summary Calculation, Health Assessment
+            Output: Dashboard Summary, Quick Actions, Health Alerts
+        }
+        
+        RECTANGLE "Update Profile" as patient_profile {
+            Input: Personal Info, Contact Details, Medical History, Insurance
+            Process: Data Validation, Update Processing, Medical Record Sync
+            Output: Updated Profile, Success Message, Medical Record Update
+        }
+    }
+    
+    package "2. Appointments" {
+        RECTANGLE "View Appointments" as patient_view_appointments {
+            Input: Patient ID, Date Range, Status Filter, Doctor Filter
+            Process: Appointment Retrieval, Filtering, Calendar Integration
+            Output: Appointment List, Calendar View, Status Summary
+        }
+        
+        RECTANGLE "Book Appointment" as book_appointment {
+            Input: Preferred Date/Time, Doctor Selection, Reason, Appointment Type
+            Process: Availability Check, Conflict Detection, Booking, Confirmation
+            Output: New Appointment, Confirmation, Doctor Notification
+        }
+        
+        RECTANGLE "Cancel Appointment" as cancel_appointment {
+            Input: Appointment ID, Cancellation Reason, Alternative Preferences
+            Process: Cancellation Processing, Notification, Status Update
+            Output: Cancelled Appointment, Confirmation, Rescheduling Options
+        }
+    }
+    
+    package "3. Medical Consultations" {
+        RECTANGLE "View Consultations" as patient_view_consultations {
+            Input: Patient ID, Date Range, Status Filter, Doctor Filter
+            Process: Consultation Retrieval, Filtering, Medical Record Access
+            Output: Consultation List, Medical Summary, Health Status
+        }
+        
+        RECTANGLE "View Consultation Details" as consultation_details {
+            Input: Consultation ID, Medical Record Access
+            Process: Detailed Data Retrieval, Medical Information Access
+            Output: Consultation Details, Medical Notes, Treatment Plan
+        }
+    }
+    
+    package "4. Prescriptions" {
+        RECTANGLE "View Prescriptions" as patient_view_prescriptions {
+            Input: Patient ID, Date Range, Status Filter, Medication Type
+            Process: Prescription Retrieval, Filtering, Medication Information
+            Output: Prescription List, Medication Summary, Instructions
+        }
+        
+        RECTANGLE "View Prescription Details" as prescription_details {
+            Input: Prescription ID, Medication Information Access
+            Process: Detailed Data Retrieval, Medication Information
+            Output: Prescription Details, Instructions, Side Effects, Refill Info
+        }
+    }
+    
+    package "5. Medical Records" {
+        RECTANGLE "View Medical Records" as view_medical_records {
+            Input: Patient ID, Date Range, Record Type, Health Category
+            Process: Medical Record Retrieval, Filtering, Health Analysis
+            Output: Medical Record List, Health Summary, Trend Analysis
+        }
+        
+        RECTANGLE "View Record Details" as record_details {
+            Input: Record ID, Medical Information Access, Health History
+            Process: Detailed Data Retrieval, Medical Information Access
+            Output: Medical Record Details, Health History, Treatment Timeline
+        }
+    }
+    
+    package "6. Billing & Invoices" {
+        RECTANGLE "View Invoices" as view_invoices {
+            Input: Patient ID, Date Range, Status Filter, Payment Status
+            Process: Invoice Retrieval, Filtering, Payment Status Check
+            Output: Invoice List, Payment Summary, Outstanding Amounts
+        }
+        
+        RECTANGLE "Download Invoice" as download_invoice {
+            Input: Invoice ID, Download Format, Payment Details
+            Process: PDF Generation, File Creation, Download, Payment Record
+            Output: Invoice PDF, Download Link, Payment Confirmation
+        }
+    }
+}
+
+' Hierarchical relationships
+patient_login --> patient_dashboard
+patient_dashboard --> view_dashboard
+patient_dashboard --> patient_profile
+patient_dashboard --> patient_view_appointments
+patient_dashboard --> book_appointment
+patient_dashboard --> cancel_appointment
+patient_dashboard --> patient_view_consultations
+patient_dashboard --> consultation_details
+patient_dashboard --> patient_view_prescriptions
+patient_dashboard --> prescription_details
+patient_dashboard --> view_medical_records
+patient_dashboard --> record_details
+patient_dashboard --> view_invoices
+patient_dashboard --> download_invoice
+
+@enduml
+
+@startuml iWellCare_System_Overview_IPO
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 10
+skinparam classFontName "Times New Roman"
+skinparam classFontSize 10
+skinparam packageFontName "Times New Roman"
+skinparam packageFontSize 12
+skinparam titleFontName "Times New Roman"
+skinparam titleFontSize 14
+
+title iWellCare Healthcare Management System - Overall System IPO Model
+
+package "Healthcare System Inputs" {
+    RECTANGLE "User Authentication" as auth_input {
+        - Username/Email
+        - Password
+        - Role Information
+        - Medical License Verification
+    }
+    
+    RECTANGLE "Patient Medical Data" as patient_input {
+        - Personal Information
+        - Medical History
+        - Contact Details
+        - Insurance Information
+        - Health Records
+    }
+    
+    RECTANGLE "Medical Services Data" as medical_input {
+        - Appointment Bookings
+        - Medical Consultations
+        - Prescriptions
+        - Vital Signs
+        - Diagnosis & Treatment
+        - Medical Records
+    }
+    
+    RECTANGLE "Healthcare Administrative Data" as admin_input {
+        - Staff Management
+        - Medical Inventory Updates
+        - Healthcare Billing Information
+        - Medical System Settings
+        - Healthcare Reports
+    }
+}
+
+package "Healthcare System Processes" {
+    RECTANGLE "Authentication & Authorization" as auth_process {
+        - Identity Verification
+        - Role-based Access Control
+        - HIPAA Compliance
+        - Medical Permission Validation
+        - Session Management
+    }
+    
+    RECTANGLE "Medical Data Management" as data_process {
+        - Medical Data Validation
+        - HIPAA Compliance Processing
+        - Healthcare Business Logic
+        - Medical Database Operations
+        - Secure File Processing
+    }
+    
+    RECTANGLE "Healthcare Communication" as comm_process {
+        - Medical Notifications
+        - Patient Health Alerts
+        - Appointment Reminders
+        - Medical Status Updates
+        - HIPAA-Compliant Messaging
+    }
+    
+    RECTANGLE "Healthcare Reporting & Analytics" as report_process {
+        - Medical Data Aggregation
+        - Health Analytics
+        - Medical Report Generation
+        - Health Outcome Tracking
+        - Medical Export Processing
+    }
+}
+
+package "Healthcare System Outputs" {
+    RECTANGLE "Healthcare User Interfaces" as ui_output {
+        - Role-based Medical Dashboards
+        - Medical Forms & Interfaces
+        - Patient Health Data Tables
+        - Medical Calendar Views
+        - Health Monitoring Displays
+    }
+    
+    RECTANGLE "Secure Medical Data Storage" as storage_output {
+        - HIPAA-Compliant Database Records
+        - Secure Medical File Storage
+        - Healthcare Backup Systems
+        - Medical Audit Logs
+        - Patient Privacy Protection
+    }
+    
+    RECTANGLE "Healthcare Communications" as comm_output {
+        - HIPAA-Compliant Email Confirmations
+        - Secure Medical SMS Notifications
+        - Healthcare System Alerts
+        - Patient Health Status Updates
+        - Medical Communication Logs
+    }
+    
+    RECTANGLE "Medical Reports & Exports" as export_output {
+        - Medical PDF Reports
+        - Healthcare Excel Spreadsheets
+        - Health Data Analytics
+        - Medical Performance Metrics
+        - Patient Health Insights
+    }
+}
+
+' Healthcare system flow relationships
+auth_input --> auth_process
+patient_input --> data_process
+medical_input --> data_process
+admin_input --> data_process
+
+auth_process --> data_process
+data_process --> comm_process
+data_process --> report_process
+
+data_process --> ui_output
+data_process --> storage_output
+comm_process --> comm_output
+report_process --> export_output
+
+@enduml 

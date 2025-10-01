@@ -1,0 +1,56 @@
+@startuml Manage Medication Activity Diagram
+
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 12
+
+|User|
+
+start
+
+:Access medications/inventory section;
+
+if (Action?) then (View List)
+
+  |System|
+
+  :Display medications list;
+
+  |User|
+
+  :View medication details if selected;
+
+else if (Add/Create)
+
+  :Open add medication form;
+
+  :Fill medication details (name, quantity, expiry);
+
+  |System|
+
+  :Validate and save to inventory;
+
+else if (Edit)
+
+  :Select medication;
+
+  :Edit details;
+
+  |System|
+
+  :Save changes;
+
+else if (Delete/Archive)
+
+  :Select medication;
+
+  :Confirm action;
+
+  |System|
+
+  :Remove or archive medication;
+
+endif
+
+stop
+
+@enduml
